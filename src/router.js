@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+
+import DiscResult from './views/DiscResult.vue'
 
 Vue.use(Router)
 
@@ -9,9 +10,9 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: '/result/disc/', // TODO: /result/:id/disc
+      name: 'discResult',
+      component: DiscResult
     },
     {
       path: '/about',
