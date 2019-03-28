@@ -1,28 +1,23 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-
       <!-- HEADER START -->
       <v-navigation-drawer fixed v-model="drawer" app>
         <v-list dense>
-          <v-list-tile>
-            <!-- dummies -->
-            <!-- <v-list-tile @click=""> TODO: @click / routerlink to= -->
+          <v-list-tile @click="$router.push({name : 'home'})">
             <v-list-tile-action>
               <v-icon>home</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Home</v-list-tile-title>
+              <v-list-tile-title>Beranda</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile>
-            <!-- dummies -->
-            <!-- <v-list-tile @click> TODO: @click / routerlink to= -->
+          <v-list-tile @click="$router.push({name : 'applicant'})">
             <v-list-tile-action>
-              <v-icon>contact_mail</v-icon>
+              <v-icon>people</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Contact</v-list-tile-title>
+              <v-list-tile-title>Data Pelamar</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -59,8 +54,7 @@ export default {
       drawer: null
     }
   },
-  props: {
-    source: String
+  methods: {
   }
 }
 </script>
