@@ -3,8 +3,8 @@ import Router from "vue-router";
 
 import Login from './views/User/Login.vue'
 
-import Applicant from "./views/Applicants/Applicants.vue";
-import DiscResult from "./views/Applicants/Result/DiscResult.vue";
+import Applicant from "./views/Applicant/Applicants.vue";
+import DiscResult from "./views/Applicant/Result/DiscResult.vue";
 
 Vue.use(Router);
 
