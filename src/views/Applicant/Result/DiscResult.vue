@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import discTable from '@/components/Result/Disc/DiscTable'
+import discTable from '@/components/Applicant/Result/Disc/DiscTable'
 
 export default {
   data () {
