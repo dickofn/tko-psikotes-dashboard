@@ -12,7 +12,7 @@
               <v-list-tile-title>Beranda</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile @click="$router.push({name : 'applicant'})">
+          <v-list-tile @click="$router.push({name : 'applicants'})">
             <v-list-tile-action>
               <v-icon>people</v-icon>
             </v-list-tile-action>

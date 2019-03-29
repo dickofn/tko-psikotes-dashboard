@@ -3,7 +3,8 @@ import Router from "vue-router";
 
 import Login from './views/User/Login.vue'
 
-import Applicant from "./views/Applicant/Applicants.vue";
+import Applicants from "./views/Applicant/Applicants.vue";
+import Applicant from "./views/Applicant/Detail/Applicant.vue";
 import DiscResult from "./views/Applicant/Result/DiscResult.vue";
 
 Vue.use(Router);
@@ -20,6 +21,11 @@ export default new Router({
     },
     {
       path: "/applicant", 
+      name: "applicants",
+      component: Applicants
+    },
+    {
+      path: "/applicant/:applicantId", 
       name: "applicant",
       component: Applicant
     },
