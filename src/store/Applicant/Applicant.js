@@ -3,7 +3,11 @@ import Axios from "axios";
 export default {
   state: {
     applicants: [],
-    applicant: null
+    applicant: {
+      applicant: null,
+      applicantDetail: null,
+      applicantExperience: null
+    }
   },
   mutations: {
     UPDATE_APPLICANTS(state, payload) {
