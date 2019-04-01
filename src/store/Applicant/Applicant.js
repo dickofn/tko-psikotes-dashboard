@@ -3,11 +3,7 @@ import Axios from "axios";
 export default {
   state: {
     applicants: [],
-    applicant: {
-      applicant: null,
-      applicantDetail: null,
-      applicantExperience: null
-    }
+    applicant: null
   },
   mutations: {
     UPDATE_APPLICANTS(state, payload) {
@@ -39,6 +35,11 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    clearApplicant({ commit }) {
+      commit("UPDATE_LOADING", true);
+      commit("UPDATE_APPLICANT", null);
+      commit("UPDATE_LOADING", false);
     }
   }
 };
