@@ -602,7 +602,7 @@
             <v-container grid-list-xs>
               <v-layout row wrap>
                 <v-flex md-1 offset-md7 xs1 offset-xs11>
-                  <v-btn dark large color="red darken-2" v-print>
+                  <v-btn dark large color="red darken-2">
                     <v-icon dark>print</v-icon>
                   </v-btn>
                 </v-flex>
