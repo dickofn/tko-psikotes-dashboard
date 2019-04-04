@@ -299,26 +299,32 @@
                   <h4>Data Tanggungan</h4>
                 </v-flex>
                 <v-flex md8 xs12>
-                  <v-data-table
-                    :headers="familiesHeaders"
-                    :items="applicant.applicantDetail.applicantFamily.applicantDependent"
-                    class="elevation-1"
-                    disable-initial-sort
-                    hide-actions
-                  >
-                    <template v-slot:items="props">
-                      <tr style="cursor: pointer">
-                        <td class="text-xs-left">{{ props.item.relationshipType.relationshipName }}</td>
-                        <td class="text-xs-left">{{ props.item.name }}</td>
-                        <td class="text-xs-left">{{ props.item.sex }}</td>
-                        <td class="text-xs-left">{{ props.item.placeBirth }}</td>
-                        <td class="text-xs-left">{{ props.item.dateBirth }}</td>
-                        <td class="text-xs-left">{{ props.item.educationType.educationName }}</td>
-                        <td class="text-xs-left">{{ props.item.occupation }}</td>
-                        <td class="text-xs-left">{{ props.item.description }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
+                  <div class="table">
+                    <v-table :data="applicant.applicantDetail.applicantFamily.applicantDependent">
+                      <thead slot="head">
+                        <th>Hubungan Keluarga</th>
+                        <th>Nama</th>
+                        <th>M / F</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Pendidikan</th>
+                        <th>Pekerjaan</th>
+                        <th>Keterangan</th>
+                      </thead>
+                      <tbody slot="body" slot-scope="{displayData}">
+                        <tr v-for="row in displayData" :key="row.id">
+                          <td>{{ row.relationshipType.relationshipName }}</td>
+                          <td>{{ row.name }}</td>
+                          <td>{{ row.sex }}</td>
+                          <td>{{ row.placeBirth }}</td>
+                          <td>{{ row.dateBirth }}</td>
+                          <td>{{ row.educationType.educationName }}</td>
+                          <td>{{ row.occupation }}</td>
+                          <td>{{ row.description }}</td>
+                        </tr>
+                      </tbody>
+                    </v-table>
+                  </div>
                 </v-flex>
               </v-layout>
 
@@ -327,26 +333,32 @@
                   <h4>Susunan Keluarga</h4>
                 </v-flex>
                 <v-flex md8 xs12>
-                  <v-data-table
-                    :headers="familiesHeaders"
-                    :items="applicant.applicantDetail.applicantFamily.applicantFamily"
-                    class="elevation-1"
-                    disable-initial-sort
-                    hide-actions
-                  >
-                    <template v-slot:items="props">
-                      <tr style="cursor: pointer">
-                        <td class="text-xs-left">{{ props.item.relationshipType.relationshipName }}</td>
-                        <td class="text-xs-left">{{ props.item.name }}</td>
-                        <td class="text-xs-left">{{ props.item.sex }}</td>
-                        <td class="text-xs-left">{{ props.item.placeBirth }}</td>
-                        <td class="text-xs-left">{{ props.item.dateBirth }}</td>
-                        <td class="text-xs-left">{{ props.item.educationType.educationName }}</td>
-                        <td class="text-xs-left">{{ props.item.occupation }}</td>
-                        <td class="text-xs-left">{{ props.item.description }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
+                  <div class="table">
+                    <v-table :data="applicant.applicantDetail.applicantFamily.applicantFamily">
+                      <thead slot="head">
+                        <th>Hubungan Keluarga</th>
+                        <th>Nama</th>
+                        <th>M / F</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Pendidikan</th>
+                        <th>Pekerjaan</th>
+                        <th>Keterangan</th>
+                      </thead>
+                      <tbody slot="body" slot-scope="{displayData}">
+                        <tr v-for="row in displayData" :key="row.id">
+                          <td>{{ row.relationshipType.relationshipName }}</td>
+                          <td>{{ row.name }}</td>
+                          <td>{{ row.sex }}</td>
+                          <td>{{ row.placeBirth }}</td>
+                          <td>{{ row.dateBirth }}</td>
+                          <td>{{ row.educationType.educationName }}</td>
+                          <td>{{ row.occupation }}</td>
+                          <td>{{ row.description }}</td>
+                        </tr>
+                      </tbody>
+                    </v-table>
+                  </div>
                 </v-flex>
               </v-layout>
 
@@ -355,25 +367,30 @@
                   <h4>Kontak yang Dapat Dihubungi</h4>
                 </v-flex>
                 <v-flex md8 xs12>
-                  <v-data-table
-                    :headers="contactsHeaders"
-                    :items="applicant.applicantDetail.applicantContact"
-                    class="elevation-1"
-                    disable-initial-sort
-                    hide-actions
-                  >
-                    <template v-slot:items="props">
-                      <tr style="cursor: pointer">
-                        <td class="text-xs-left">{{ props.item.relationshipType.relationshipName }}</td>
-                        <td class="text-xs-left">{{ props.item.name }}</td>
-                        <td class="text-xs-left">{{ props.item.sex }}</td>
-                        <td class="text-xs-left">{{ props.item.address.detailAddress }}</td>
-                        <td class="text-xs-left">{{ props.item.contact }}</td>
-                        <td class="text-xs-left">{{ props.item.occupation }}</td>
-                        <td class="text-xs-left">{{ props.item.description }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
+                  <div class="table">
+                    <v-table :data="applicant.applicantDetail.applicantContact">
+                      <thead slot="head">
+                        <th>Jenis Hubungan</th>
+                        <th>Nama</th>
+                        <th>M / F</th>
+                        <th>Alamat</th>
+                        <th>No Telepon</th>
+                        <th>Pekerjaan</th>
+                        <th>Keterangan</th>
+                      </thead>
+                      <tbody slot="body" slot-scope="{displayData}">
+                        <tr v-for="row in displayData" :key="row.id">
+                          <td>{{ row.relationshipType.relationshipName }}</td>
+                          <td>{{ row.name }}</td>
+                          <td>{{ row.sex }}</td>
+                          <td>{{ row.address.detailAddress }}</td>
+                          <td>{{ row.contact }}</td>
+                          <td>{{ row.occupation }}</td>
+                          <td>{{ row.description }}</td>
+                        </tr>
+                      </tbody>
+                    </v-table>
+                  </div>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -386,25 +403,28 @@
             <v-container grid-list-xs>
               <v-layout row wrap mb-3>
                 <v-flex md8 xs12>
-                  <v-data-table
-                    :headers="educationsHeaders"
-                    :items="applicant.applicantDetail.applicantEducation"
-                    class="elevation-1"
-                    disable-initial-sort
-                    hide-actions
-                  >
-                    <template v-slot:items="props">
-                      <tr style="cursor: pointer">
-                        <td class="text-xs-left">{{ props.item.educationType.educationName }}</td>
-                        <td class="text-xs-left">{{ props.item.institution }}</td>
-                        <td class="text-xs-left">{{ props.item.startYear }}</td>
-                        <td class="text-xs-left">{{ props.item.endYear }}</td>
-                        <td class="text-xs-left">{{ props.item.major }}</td>
-                        <td class="text-xs-left">{{ props.item.gpa }}</td>
-                        <td class="text-xs-left">{{ props.item.description }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
+                  <div class="table">
+                    <v-table :data="applicant.applicantDetail.applicantEducation">
+                      <thead slot="head">
+                        <th>Jenjang Pendidikan</th>
+                        <th>Institusi</th>
+                        <th>Periode</th>
+                        <th>Jurusan</th>
+                        <th>Peringkat</th>
+                        <th>Keterangan</th>
+                      </thead>
+                      <tbody slot="body" slot-scope="{displayData}">
+                        <tr v-for="row in displayData" :key="row.id">
+                          <td>{{ row.educationType.educationName }}</td>
+                          <td>{{ row.institution }}</td>
+                          <td>{{ row.startYear }} - {{ row.endYear }}</td>
+                          <td>{{ row.major }}</td>
+                          <td>{{ row.gpa }}</td>
+                          <td>{{ row.description }}</td>
+                        </tr>
+                      </tbody>
+                    </v-table>
+                  </div>
                 </v-flex>
               </v-layout>
 
@@ -440,77 +460,88 @@
           </v-card-title>
           <v-card-text>
             <v-container grid-list-xs>
-              <v-layout row wrap mb-3>
+              <v-layout
+                row
+                wrap
+                mb-3
+                v-if="applicant.applicantExperience.applicantOrganization.length"
+              >
                 <v-flex md8 xs12>
                   <h4>Pengalaman Organisasi</h4>
                 </v-flex>
                 <v-flex md8 xs12>
-                  <v-data-table
-                    :headers="educationsHeaders"
-                    :items="applicant.applicantExperience.applicantOrganization"
-                    class="elevation-1"
-                    disable-initial-sort
-                    hide-actions
-                  >
-                    <template v-slot:items="props">
-                      <tr style="cursor: pointer">
-                        <td class="text-xs-left">{{ props.item.organizationName }}</td>
-                        <td class="text-xs-left">{{ props.item.organizationTitle }}</td>
-                        <td class="text-xs-left">{{ props.item.startYear }}</td>
-                        <td class="text-xs-left">{{ props.item.endYear }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
+                  <div class="table">
+                    <v-table :data="applicant.applicantExperience.applicantOrganization">
+                      <thead slot="head">
+                        <th>Nama Organisasi</th>
+                        <th>Jabatan</th>
+                        <th>Periode</th>
+                      </thead>
+                      <tbody slot="body" slot-scope="{displayData}">
+                        <tr v-for="row in displayData" :key="row.id">
+                          <td>{{ row.organizationName }}</td>
+                          <td>{{ row.organizationTitle }}</td>
+                          <td>{{ row.startYear }} - {{ row.endYear }}</td>
+                        </tr>
+                      </tbody>
+                    </v-table>
+                  </div>
                 </v-flex>
               </v-layout>
 
-              <v-layout row wrap mb-3>
+              <v-layout row wrap mb-3 v-if="applicant.applicantExperience.applicantTraining.length">
                 <v-flex md8 xs12>
                   <h4>Pengalaman Kursus & Training</h4>
                 </v-flex>
                 <v-flex md8 xs12>
-                  <v-data-table
-                    :headers="trainingHeaders"
-                    :items="applicant.applicantExperience.applicantTraining"
-                    class="elevation-1"
-                    disable-initial-sort
-                    hide-actions
-                  >
-                    <template v-slot:items="props">
-                      <tr style="cursor: pointer">
-                        <td class="text-xs-left">{{ props.item.trainingName }}</td>
-                        <td class="text-xs-left">{{ props.item.year }}</td>
-                        <td class="text-xs-left">{{ props.item.trainingInstitution }}</td>
-                        <td class="text-xs-left">{{ props.item.trainingGrade }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
+                  <div class="table">
+                    <v-table :data="applicant.applicantExperience.applicantTraining">
+                      <thead slot="head">
+                        <th>Nama Acara</th>
+                        <th>Tahun Diselenggarakan</th>
+                        <th>Nama Penyelenggara</th>
+                        <th>Peringkat</th>
+                      </thead>
+                      <tbody slot="body" slot-scope="{displayData}">
+                        <tr v-for="row in displayData" :key="row.id">
+                          <td>{{ row.trainingName }}</td>
+                          <td>{{ row.year }}</td>
+                          <td>{{ row.trainingInstitution }}</td>
+                          <td>{{ row.trainingGrade }}</td>
+                        </tr>
+                      </tbody>
+                    </v-table>
+                  </div>
                 </v-flex>
               </v-layout>
 
-              <v-layout row wrap mb-3>
+              <v-layout row wrap mb-3 v-if="applicant.applicantExperience.applicantLanguage.length">
                 <v-flex md8 xs12>
                   <h4>Bahasa Asing yang Dikuasai</h4>
                 </v-flex>
                 <v-flex md8 xs12>
-                  <v-data-table
-                    :headers="languageHeaders"
-                    :items="applicant.applicantExperience.applicantLanguage"
-                    class="elevation-1"
-                    disable-initial-sort
-                    hide-actions
-                  >
-                    <template v-slot:items="props">
-                      <tr style="cursor: pointer">
-                        <td class="text-xs-left">{{ props.item.language }}</td>
-                        <td class="text-xs-left">{{ props.item.listening }}</td>
-                        <td class="text-xs-left">{{ props.item.reading }}</td>
-                        <td class="text-xs-left">{{ props.item.speaking }}</td>
-                        <td class="text-xs-left">{{ props.item.written }}</td>
-                        <td class="text-xs-left">{{ props.item.toefl }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
+                  <div class="table">
+                    <v-table :data="applicant.applicantExperience.applicantLanguage">
+                      <thead slot="head">
+                        <th>Bahasa</th>
+                        <th>Mendengar</th>
+                        <th>Membaca</th>
+                        <th>Berbicara</th>
+                        <th>Menulis</th>
+                        <th>Score</th>
+                      </thead>
+                      <tbody slot="body" slot-scope="{displayData}">
+                        <tr v-for="row in displayData" :key="row.id">
+                          <td>{{ row.language }}</td>
+                          <td>{{ row.listening }}</td>
+                          <td>{{ row.reading }}</td>
+                          <td>{{ row.speaking }}</td>
+                          <td>{{ row.written }}</td>
+                          <td>{{ row.toefl }}</td>
+                        </tr>
+                      </tbody>
+                    </v-table>
+                  </div>
                 </v-flex>
               </v-layout>
 
@@ -598,17 +629,19 @@
             </v-container>
           </v-card-text>
 
-          <v-card-text>
-            <v-container grid-list-xs>
-              <v-layout row wrap>
-                <v-flex md-1 offset-md7 xs1 offset-xs11>
-                  <v-btn dark large color="red darken-2">
-                    <v-icon dark>print</v-icon>
-                  </v-btn>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card-text>
+          <div class="print">
+            <v-card-text>
+              <v-container grid-list-xs>
+                <v-layout row wrap>
+                  <v-flex md-1 offset-md7 xs1 offset-xs11>
+                    <v-btn dark large color="red darken-2" @click="print">
+                      <v-icon dark>print</v-icon>
+                    </v-btn>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+          </div>
         </v-card>
       </v-flex>
     </v-layout>
@@ -616,60 +649,9 @@
 </template>
 
 <script>
+import { Printd } from 'printd'
 
 export default {
-  data () {
-    return {
-      familiesHeaders: [
-        { text: 'Hubungan Keluarga', value: 'relationshipType' },
-        { text: 'Nama', value: 'name' },
-        { text: 'M / F', value: 'sex' },
-        { text: 'Tempat Lahir', value: 'placeBirth' },
-        { text: 'Tanggal Lahir', value: 'dateBirth' },
-        { text: 'Pendidikan', value: 'educationType.educationName' },
-        { text: 'Pekerjaan', value: 'occupation' },
-        { text: 'Keterangan', value: 'description' },
-      ],
-      contactsHeaders: [
-        { text: 'Jenis Hubungan', value: 'relationshipType' },
-        { text: 'Nama', value: 'name' },
-        { text: 'M / F', value: 'sex' },
-        { text: 'Alamat', value: 'address' },
-        { text: 'No Telepon', value: 'contact' },
-        { text: 'Pekerjaan', value: 'occupation' },
-        { text: 'Keterangan', value: 'description' }
-      ],
-      educationsHeaders: [
-        { text: 'Jenjang Pendidikan', value: 'educationType' },
-        { text: 'Institusi', value: 'institution' },
-        { text: 'Tahun Masuk', value: 'startYear' },
-        { text: 'Tahun Selesai', value: 'endYear' },
-        { text: 'Jurusan', value: 'major' },
-        { text: 'Peringkat', value: 'gpa' },
-        { text: 'Keterangan', value: 'description' }
-      ],
-      organizationHeaders: [
-        { text: 'Nama Organisasi', value: 'organizationName' },
-        { text: 'Jabatan', value: 'organizationTitle' },
-        { text: 'Tahun Masuk', value: 'startYear' },
-        { text: 'Tahun Selesai', value: 'endYear' }
-      ],
-      trainingHeaders: [
-        { text: 'Nama Acara', value: 'trainingName' },
-        { text: 'Tahun Diselenggarakan', value: 'year' },
-        { text: 'Nama Penyelenggara', value: 'trainingInstitution' },
-        { text: 'Peringkat', value: 'trainingGrade' }
-      ],
-      languageHeaders: [
-        { text: 'Bahasa', value: 'language' },
-        { text: 'Mendengar', value: 'listening' },
-        { text: 'Membaca', value: 'reading' },
-        { text: 'Berbicara', value: 'speaking' },
-        { text: 'Menulis', value: 'written' },
-        { text: 'Score', value: 'toefl' }
-      ]
-    }
-  },
   computed: {
     applicant () {
       return this.$store.state.applicant.applicant
@@ -700,6 +682,24 @@ export default {
         }
       });
       return fullAddress;
+    },
+    print () {
+      const d = new Printd()
+      const styles = [
+        'https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',
+        `.print { visibility: hidden }
+        table { border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid #ddd; }
+        thead { border: 1px solid #ddd; }
+        th, td { text-align: left; padding: 5px; padding-right: 8px; }
+        th { padding: 20px 8px; background-color: #000000; color: #ffffff; }
+        tr:nth-child(even) { background-color: #f2f2f2; }`
+      ]
+
+      const scripts = [
+        'document.body.style.zoom=1.2;this.blur();'
+      ]
+
+      d.print(this.$el, styles, scripts);
     }
   },
   created () {
@@ -710,3 +710,40 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.table {
+  overflow-x: auto;
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  thead {
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 5px;
+    padding-right: 8px;
+  }
+
+  th {
+    padding: 20px 8px;
+    background-color: #000;
+    color: #fff;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+
+.dragon {
+  color: red;
+}
+</style>
