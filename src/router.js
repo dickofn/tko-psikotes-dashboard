@@ -30,7 +30,7 @@ export default new Router({
       component: Applicant
     },
     {
-      path: "/result/disc", // TODO: /result/:applicant_id/disc
+      path: "/applicant/:applicantId/result/disc", // TODO: /result/:applicant_id/disc
       name: "discResult",
       component: DiscResult
     },
