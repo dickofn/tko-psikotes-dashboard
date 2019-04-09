@@ -26,28 +26,28 @@
     <!-- body  -->
     <v-layout row wrap text-xs-center v-for="(data,index) in datas.d" :key="index">
       <v-flex xs3 v-if="!checkMissingValueD">
-        <v-card :dark="d[index] != selectedD" height="20">{{ d[index] }}</v-card>
+        <v-card :dark="d[index] !== selectedD" height="20">{{ d[index] }}</v-card>
       </v-flex>
       <v-flex xs3 v-else>
-        <v-card :dark="d[index] != highD && d[index] != lowD" height="20">{{ d[index] }}</v-card>
+        <v-card :dark="d[index] !== highD && d[index] !== lowD" height="20">{{ d[index] }}</v-card>
       </v-flex>
       <v-flex xs3 v-if="!checkMissingValueI">
-        <v-card :dark="i[index] != selectedI" height="20">{{ i[index] }}</v-card>
+        <v-card :dark="i[index] !== selectedI" height="20">{{ i[index] }}</v-card>
       </v-flex>
       <v-flex xs3 v-else>
-        <v-card :dark="i[index] != highI && i[index] != lowI" height="20">{{ i[index] }}</v-card>
+        <v-card :dark="i[index] !== highI && i[index] !== lowI" height="20">{{ i[index] }}</v-card>
       </v-flex>
       <v-flex xs3 v-if="!checkMissingValueS">
-        <v-card :dark="s[index] != selectedS" height="20">{{ s[index] }}</v-card>
+        <v-card :dark="s[index] !== selectedS" height="20">{{ s[index] }}</v-card>
       </v-flex>
       <v-flex xs3 v-else>
-        <v-card :dark="s[index] != highS && s[index] != lowS" height="20">{{ s[index] }}</v-card>
+        <v-card :dark="s[index] !== highS && s[index] !== lowS" height="20">{{ s[index] }}</v-card>
       </v-flex>
       <v-flex xs3 v-if="!checkMissingValueC">
-        <v-card :dark="c[index] != selectedC" height="20">{{ c[index] }}</v-card>
+        <v-card :dark="c[index] !== selectedC" height="20">{{ c[index] }}</v-card>
       </v-flex>
       <v-flex xs3 v-else>
-        <v-card :dark="c[index] != highC && c[index] != lowC" height="20">{{ c[index] }}</v-card>
+        <v-card :dark="c[index] !== highC && c[index] !== lowC" height="20">{{ c[index] }}</v-card>
       </v-flex>
     </v-layout>
   </v-card>
