@@ -651,7 +651,7 @@
             <v-card-text>
               <v-container grid-list-xs>
                 <v-layout row wrap>
-                  <v-flex md-1 offset-md7 xs1 offset-xs11>
+                  <v-flex md8 xs12 text-xs-right>
                     <v-btn dark large color="red darken-2" @click="print">
                       <v-icon dark>print</v-icon>
                     </v-btn>
