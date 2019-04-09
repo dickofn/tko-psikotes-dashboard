@@ -39,7 +39,7 @@
 
       <!-- FOOTER START -->
       <v-footer color="red darken-2" app inset>
-        <span class="white--text">&copy; 2019</span>
+        <span class="white--text footer--custom">Tokoonderdil &copy; 2019</span>
       </v-footer>
       <!-- FOOTER END -->
     </v-app>
@@ -58,3 +58,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.footer--custom{
+  padding: 0 16px;
+}
+</style>
