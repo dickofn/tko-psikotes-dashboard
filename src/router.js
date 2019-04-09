@@ -6,6 +6,7 @@ import Login from './views/User/Login.vue'
 import Applicants from "./views/Applicant/Applicants.vue";
 import Applicant from "./views/Applicant/Detail/Applicant.vue";
 import DiscResult from "./views/Applicant/Result/DiscResult.vue";
+import Report from "./views/Applicant/Result/Report.vue";
 
 Vue.use(Router);
 
@@ -30,9 +31,14 @@ export default new Router({
       component: Applicant
     },
     {
-      path: "/applicant/:applicantId/result/disc", // TODO: /result/:applicant_id/disc
+      path: "/applicant/:applicantId/result/disc",
       name: "discResult",
       component: DiscResult
+    },
+    {
+      path: "/applicant/:applicantId/result/report",
+      name: "report",
+      component: Report
     },
     {
       path: "/about",
