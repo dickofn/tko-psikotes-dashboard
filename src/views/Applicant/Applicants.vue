@@ -1,10 +1,14 @@
 <template>
   <v-data-table :headers="headers" :items="applicants" class="elevation-1">
     <template v-slot:items="props">
-      <tr style="cursor: pointer" @click="applicantClicked(props.item)">
-        <td>{{ props.item.fullName }}</td>
+      <tr>
+        <td class="custom-td" @click="applicantClicked(props.item)">{{ props.item.fullName }}</td>
         <td class="text-xs-left">{{ props.item.placeBirth }}</td>
         <td class="text-xs-left">{{ props.item.dateBirth }}</td>
+        <td class="justify-center layout px-0">
+          <v-btn dark flat color="red darken-2" @click="setDisc(props.item.applicantId)" v-if="!props.item.examResultSet">Set DISC</v-btn>
+          <v-btn dark flat color="red darken-2" @click="seeResult" v-else>See Result</v-btn>
+        </td>
       </tr>
     </template>
   </v-data-table>
@@ -22,6 +26,7 @@ export default {
         },
         { text: 'Tempat Lahir', value: 'placeBirth' },
         { text: 'Tanggal Lahir', value: 'dateBirth' },
+        { text: 'Aksi', align: 'center', value: 'name', sortable: false }
       ]
     }
   },
@@ -33,6 +38,12 @@ export default {
   methods: {
     applicantClicked (item) {
       this.$router.push({ name: 'applicant', params: { applicantId: item.applicantId } })
+    },
+    setDisc (applicantId) {
+      this.$router.push({ name: 'discResult', params: { applicantId: applicantId } })
+    },
+    seeResult(){
+      return
     }
   },
   created () {
@@ -41,5 +52,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.custom-td {
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: red;
+  }
+}
 </style>
