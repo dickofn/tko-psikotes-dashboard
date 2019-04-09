@@ -6,8 +6,8 @@
         <td class="text-xs-left">{{ props.item.placeBirth }}</td>
         <td class="text-xs-left">{{ props.item.dateBirth }}</td>
         <td class="justify-center layout px-0">
-          <v-btn dark flat color="red darken-2" @click="setDisc(props.item.applicantId)" v-if="!props.item.examResultSet">Set DISC</v-btn>
-          <v-btn dark flat color="red darken-2" @click="seeResult" v-else>See Result</v-btn>
+          <v-btn dark flat color="red darken-2" @click="setDisc(props.item.applicantId)">Set DISC</v-btn>
+          <v-btn dark flat color="red darken-2" @click="seeResult">See Result</v-btn>
         </td>
       </tr>
     </template>
