@@ -13,8 +13,8 @@
   <v-container grid-list-xs v-else>
     <v-layout row>
       <v-flex xs12>
-        <v-card>
-          <div class="pagebreak" id="page--one">
+        <div id="page--one">
+          <v-card>
             <v-card-title primary-title>
               <h1 class="headline">Data Diri Kandidat Karyawan</h1>
             </v-card-title>
@@ -250,9 +250,11 @@
                 </v-layout>
               </v-container>
             </v-card-text>
-          </div>
+          </v-card>
+        </div>
 
-          <div class="pagebreak" id="page--two">
+        <div class="pagebreak" id="page--two">
+          <v-card>
             <v-card-title primary-title>
               <h1 class="headline">Data Keluarga</h1>
             </v-card-title>
@@ -457,9 +459,11 @@
                 </v-layout>
               </v-container>
             </v-card-text>
-          </div>
+          </v-card>
+        </div>
 
-          <div class="pagebreak" id="page--three">
+        <div class="pagebreak" id="page--three">
+          <v-card>
             <v-card-title primary-title>
               <h1 class="headline">Data Profesionalitas</h1>
             </v-card-title>
@@ -645,22 +649,21 @@
                 </v-layout>
               </v-container>
             </v-card-text>
-          </div>
-
-          <div class="print" v-if="applicant">
-            <v-card-text>
-              <v-container grid-list-xs>
-                <v-layout row wrap>
-                  <v-flex md8 xs12 text-xs-right>
-                    <v-btn dark large color="red darken-2" @click="print">
-                      <v-icon dark>print</v-icon>
-                    </v-btn>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-card-text>
-          </div>
-        </v-card>
+            <div class="print" v-if="applicant">
+              <v-card-text>
+                <v-container grid-list-xs>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12 text-xs-right>
+                      <v-btn dark large color="red darken-2" @click="print">
+                        <v-icon dark>print</v-icon>
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-text>
+            </div>
+          </v-card>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -764,5 +767,6 @@ export default {
 
 .pagebreak {
   page-break-before: always;
+  margin-top: 20px;
 }
 </style>
