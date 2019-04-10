@@ -6,8 +6,8 @@
         <td class="text-xs-left">{{ props.item.placeBirth }}</td>
         <td class="text-xs-left">{{ props.item.dateBirth }}</td>
         <td class="justify-center layout px-0">
-          <v-btn dark flat color="red darken-2" @click="setDisc(props.item.applicantId)">Set DISC</v-btn>
-          <v-btn dark flat color="red darken-2" @click="seeResult">See Result</v-btn>
+          <v-btn dark flat color="red darken-2" @click="setDisc(props.item.applicantId)">Perbaharui DISC</v-btn>
+          <v-btn dark flat color="red darken-2" @click="seeReport(props.item.applicantId)">Lihat Laporan</v-btn>
         </td>
       </tr>
     </template>
@@ -42,8 +42,8 @@ export default {
     setDisc (applicantId) {
       this.$router.push({ name: 'discResult', params: { applicantId: applicantId } })
     },
-    seeResult(){
-      return
+    seeReport(applicantId){
+      this.$router.push({ name: 'report', params: { applicantId: applicantId } })
     }
   },
   created () {
