@@ -15,7 +15,7 @@
     "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1",
     "vuejs-smart-table": "0.0.5",
-    "vuetify": "^1.5.9",
+    "vuetify": "^1.5.11",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
