@@ -132,13 +132,26 @@
 
     <v-layout row wrap>
       <v-flex xs6>
-        <v-card>
-          <v-card-text></v-card-text>
+        <v-card height="100%">
+          <v-card-text>
+            <p>Dilihat dari aspek kecerdasan, Ybs memiliki daya tangkap {{ rating(a1) }} dan daya nalar {{ rating(a2) }}. Kemampuan berkomunikasi yang dimiliki oleh Ybs {{ rating(a3) }}. Ybs memiliki kemampuan yang {{ rating(a4) }} dalam bidang angka dan {{ rating(a5) }} dalam bidang analisa.</p>
+            <br>
+            <p>Ybs tergolong {{ result.interpretasi.z }}, serta Ybs mempunyai pendekatan emosi {{ result.interpretasi.e }}. Ybs menyukai suka {{ result.interpretasi.k }}.</p>
+            <p>Dalam relasi sosial Ybs {{ result.interpretasi.o }}. Dan Ybs {{ result.interpretasi.b }}, Ybs {{ result.interpretasi.x }}, namun Ybs memiliki {{ result.interpretasi.s }}</p>
+            <br>
+            <p>Dalam pekerjaan Ybs {{ result.interpretasi.n }}, namun Ybs {{ result.interpretasi.g }}, serta Ybs memiliki {{ result.interpretasi.a }}</p>
+            <p>Dalam melakukan aktivitas Ybs {{ result.interpretasi.t }}, namun Ybs {{ result.interpretasi.v }}</p>
+            <br>
+            <p>Dalam peran pemimpin, Ybs merupakan seorang yang {{ result.interpretasi.l }}. Namun {{ result.interpretasi.p }}.</p>
+            <br>
+            <p>Dari gaya bekerja Ybs mempunyai {{ result.interpretasi.d }}, namun menyukai hal yang {{ result.interpretasi.c }} dan {{ result.interpretasi.r }}</p>
+            <p>Ybs tergolong {{ result.interpretasi.f }}, namun Ybs perlu {{ result.interpretasi.w }}</p>
+          </v-card-text>
         </v-card>
       </v-flex>
 
       <v-flex xs6>
-        <v-card>
+        <v-card height="100%">
           <v-card-text>
             <div class="scrollable">
               <table class="tableIntro">
@@ -604,100 +617,74 @@ export default {
       return disc
     }
   },
+  watch: {
+    result (v) {
+      if (v) {
+        this.applicantCheckDate = this.result.report.reportCheck
+        this.applicantReceiver = this.result.report.reportFor
+        this.applicantPurpose = this.result.report.reportPurpose
+        this.applicantJob = this.result.report.applicantPositionFor
+        this.recommendedOption = this.result.report.recommendation
+        this.hrdNote = this.result.report.memo
+      }
+    }
+  },
   methods: {
+    rating (payload) {
+      if (payload == 6) return "sangat baik"
+      else if (payload == 5) return "baik"
+      else if (payload == 4) return "cukup baik"
+      else if (payload == 3) return "sedang"
+      else if (payload == 2) return "kurang"
+      else if (payload == 1) return "sangat kurang"
+    },
     print () {
       const d = new Printd()
       const styles = [
-        'https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',      
-        ` .padding-cheat { padding : 0 !important; margin : 0 !important }
+        'https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',
+        `.padding-cheat { padding : 0 !important; margin : 0 !important }
           .print { display: none }
           .scrollable { overflow-x: auto; }
-          .tableIntro {
-            border: 1px solid #ddd;
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-          }
-          .tableIntro td,
-          .tableIntro th {
-            padding: 1px 5px;
-            border: 1px solid #ddd;
-          }
-          .tableMain {
-            border: 1px solid #ddd;
-            width: 100%;
-            border-collapse: collapse;
-          }
-          .tableMain .sub-thead {
-            text-align: left;
-            background-color: #555;
-            color: #fff;
-          }
-          .tableMain td,
-          .tableMain th {
-            padding: 1px 5px;
-            border: 1px solid #ddd;
-          }
-          .tableMain .fixed-width {
-            width: 30px;
-          }
-          .tableDisc {
-            padding: 1px 5px;
-            border: 1px solid #ddd;
-          }
-          .flex-space-between {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-          }
-          .flex-space-between label {
-            padding-left: 10px;
-          }
-          .score-tbody .active {
-            background-color: #d32f2f;
-          }
-          .tableForm {
-            width: 100%;
-            margin-bottom: 20px;
-          }
-          .tableForm td,
-          .tableForm th {
-            padding: 1px 5px;
-          }
-          .tableForm .question {
-            width: 25%;
-          }
-          .tableForm .separator {
-            width: 1%;
-          }
-          .tableForm .answer {
-            width: 74%;
-            border-bottom: 1px solid #000;
-          }
-          .tableSign {
-            border: 1px solid #000;
-            width: 100%;
-            border-collapse: collapse;
-          }
-          .tableSign td,
-          .tableSign th {
-            width: 33%;
-            padding: 1px 5px;
-            border: 1px solid #000;
-          }
-          .tableSign .sign-field {
-            padding: 10px 10px;
-            padding-top: 150px;
-            text-align: center;
-          }`
+          .tableIntro { border: 1px solid #ddd; width: 100%; border-collapse: collapse; text-align: center; }
+          .tableIntro td, .tableIntro th { padding: 1px 5px; border: 1px solid #ddd; }
+          .tableMain { border: 1px solid #ddd; width: 100%; border-collapse: collapse; }
+          .tableMain .sub-thead { text-align: left; background-color: #555; color: #fff; }
+          .tableMain td, .tableMain th { padding: 1px 5px; border: 1px solid #ddd; }
+          .tableMain .fixed-width { width: 30px; }
+          .tableDisc { padding: 1px 5px; border: 1px solid #ddd; }
+          .flex-space-between { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+          .flex-space-between label { padding-left: 10px; }
+          .score-tbody .active { background-color: #d32f2f; }
+          .tableForm { width: 100%; margin-bottom: 20px; }
+          .tableForm td, .tableForm th { padding: 1px 5px; }
+          .tableForm .question { width: 25%; }
+          .tableForm .separator { width: 1%; }
+          .tableForm .answer { width: 74%; border-bottom: 1px solid #000; }
+          .tableSign { border: 1px solid #000; width: 100%; border-collapse: collapse; }
+          .tableSign td, .tableSign th { width: 33%; padding: 1px 5px; border: 1px solid #000; }
+          .tableSign .sign-field { padding: 10px 10px; padding-top: 150px; text-align: center; }`
       ]
 
       const scripts = [
         'document.body.style.zoom=1.0;this.blur();'
       ]
 
-      d.print(this.$el, styles, scripts);
+      const data = {
+        applicantId: this.$route.params.applicantId,
+        reportCheck: this.applicantCheckDate,
+        reportFor: this.applicantReceiver,
+        reportPurpose: this.applicantPurpose,
+        applicantPositionFor: this.applicantJob,
+        recommendation: this.recommendedOption,
+        memo: this.hrdNote
+      }
+
+      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/report/new", data)
+        .then(res => {
+          if (res.status == 200) {
+            d.print(this.$el, styles, scripts);
+          }
+        })
     }
   },
   created () {
