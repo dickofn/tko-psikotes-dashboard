@@ -169,8 +169,28 @@
                       id="applicantImpairment"
                       :value="applicant.applicant.applicant.physicalImpairment"
                       readonly
-                      :disabled="!applicant.applicant.applicant.physicalImpairment"
+                      append-icon="edit"
+                      @click:append="editPhysicalImpairmentDialog = true"
                     ></v-text-field>
+
+                    <v-dialog v-model="editPhysicalImpairmentDialog" max-width="500px">
+                      <v-card>
+                        <v-card-title>Atur Kelainan Fisik</v-card-title>
+                        <v-card-text></v-card-text>
+                        <v-card-actions>
+                          <v-btn
+                            color="red darken-2"
+                            flat
+                            @click="editPhysicalImpairmentDialog = false"
+                          >Close</v-btn>
+                          <v-btn
+                            color="red darken-2"
+                            flat
+                            @click="editPhysicalImpairment"
+                          >Submit</v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
                   </v-flex>
                 </v-layout>
 
@@ -673,6 +693,11 @@
 import { Printd } from 'printd'
 
 export default {
+  data () {
+    return {
+      editPhysicalImpairmentDialog: false
+    }
+  },
   computed: {
     applicant () {
       return this.$store.state.applicant.applicant
@@ -703,6 +728,15 @@ export default {
         }
       });
       return fullAddress;
+    },
+    editPhysicalImpairment() {
+      
+    },
+    editMartialStatus() {
+
+    },
+    editEducation() {
+
     },
     print () {
       const d = new Printd()
