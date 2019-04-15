@@ -170,24 +170,35 @@
                       :value="applicant.applicant.applicant.physicalImpairment"
                       readonly
                       append-icon="edit"
-                      @click:append="editPhysicalImpairmentDialog = true"
+                      @click:append="editPhysicalImpairmentDialog = true; physicalImpairment = applicant.applicant.applicant.physicalImpairment"
                     ></v-text-field>
 
-                    <v-dialog v-model="editPhysicalImpairmentDialog" max-width="500px">
+                    <v-dialog v-model="editPhysicalImpairmentDialog" max-width="50vw" persistent>
                       <v-card>
-                        <v-card-title>Atur Kelainan Fisik</v-card-title>
-                        <v-card-text></v-card-text>
+                        <v-card-title>
+                          <h1 class="headline">Atur Kelainan Fisik</h1>
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container grid-list-xs>
+                            <v-layout row wrap>
+                              <v-flex xs12>
+                                <v-text-field
+                                  label="Kelainan Fisik"
+                                  name="physicalImpairment"
+                                  id="physicalImpairment"
+                                  v-model="physicalImpairment"
+                                ></v-text-field>
+                              </v-flex>
+                            </v-layout>
+                          </v-container>
+                        </v-card-text>
                         <v-card-actions>
                           <v-btn
                             color="red darken-2"
                             flat
-                            @click="editPhysicalImpairmentDialog = false"
+                            @click="editPhysicalImpairmentDialog = false; physicalImpairment = applicant.applicant.applicant.physicalImpairment"
                           >Close</v-btn>
-                          <v-btn
-                            color="red darken-2"
-                            flat
-                            @click="editPhysicalImpairment"
-                          >Submit</v-btn>
+                          <v-btn color="red darken-2" flat @click="editPhysicalImpairment">Submit</v-btn>
                         </v-card-actions>
                       </v-card>
                     </v-dialog>
@@ -255,6 +266,8 @@
                       id="applicantMartialStatus"
                       :value="applicant.applicant.applicant.martialStatus"
                       readonly
+                      append-icon="edit"
+                      @click:append="editMartialStatusDialog = true; martialStatus = applicant.applicant.applicant.martialStatus; martialDate = applicant.applicant.applicant.martialDate"
                     ></v-text-field>
                   </v-flex>
                   <v-flex md4 xs6>
@@ -266,6 +279,60 @@
                       readonly
                       v-if="applicant.applicant.applicant.martialDate"
                     ></v-text-field>
+
+                    <v-dialog v-model="editMartialStatusDialog" max-width="50vw" persistent>
+                      <v-card>
+                        <v-card-title>
+                          <h1 class="headline">Atur Status Pernikahan</h1>
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container grid-list-xs>
+                            <v-layout row wrap>
+                              <v-flex md6 xs12>
+                                <v-select
+                                  :items="martialStatuses"
+                                  label="Status Pernikahan"
+                                  v-model="martialStatus"
+                                ></v-select>
+                              </v-flex>
+                              <v-flex md6 xs12 v-if="martialStatus!='Belum Menikah'">
+                                <v-menu
+                                  :close-on-content-click="false"
+                                  v-model="martialDateMenu"
+                                  :nudge-right="40"
+                                  lazy
+                                  transition="scale-transition"
+                                  offset-y
+                                  full-width
+                                  min-width="290px"
+                                >
+                                  <v-text-field
+                                    slot="activator"
+                                    v-model="martialDate"
+                                    label="Sejak Tanggal (YYYY-MM-DD)"
+                                    prepend-icon="event"
+                                    readonly
+                                  ></v-text-field>
+                                  <v-date-picker
+                                    v-model="martialDate"
+                                    @input="martialDateMenu = false"
+                                    :allowed-dates="allowedDates"
+                                  ></v-date-picker>
+                                </v-menu>
+                              </v-flex>
+                            </v-layout>
+                          </v-container>
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-btn
+                            color="red darken-2"
+                            flat
+                            @click="editMartialStatusDialog = false; martialStatus = applicant.applicant.applicant.MartialStatus; martialDate = applicant.applicant.applicant.MartialDate"
+                          >Close</v-btn>
+                          <v-btn color="red darken-2" flat @click="editMartialStatus">Submit</v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -422,7 +489,10 @@
             </v-card-text>
 
             <v-card-title primary-title>
-              <h1 class="headline">Riwayat Pendidikan</h1>
+              <h1 class="headline">Riwayat Pendidikan</h1>&nbsp;
+              <v-icon
+                @click="editEducationDialog = true; education = applicant.applicantDetail.applicantEducation"
+              >edit</v-icon>
             </v-card-title>
             <v-card-text>
               <v-container grid-list-xs>
@@ -450,6 +520,50 @@
                         </tbody>
                       </v-table>
                     </div>
+
+                    <v-dialog v-model="editEducationDialog" persistent fullscreen>
+                      <v-card>
+                        <v-card-title>
+                          <h1 class="headline">Atur Riwayat Pendidikan</h1>
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container grid-list-xs>
+                            <v-layout row wrap>
+                              <v-flex xs12>
+                                <v-data-table
+                                  :headers="educationHeader"
+                                  :items="education"
+                                  class="elevation-1"
+                                  disable-initial-sort
+                                  hide-actions
+                                >
+                                  <template v-slot:items="props">
+                                    <td>{{ props.item.educationType.educationName }}</td>
+                                    <td>{{ props.item.institution }}</td>
+                                    <td>{{ props.item.startYear }} - {{ props.item.endYear }}</td>
+                                    <td>{{ props.item.major }}</td>
+                                    <td>{{ props.item.gpa }}</td>
+                                    <td>{{ props.item.description }}</td>
+                                    <td>
+                                      <v-icon small class="mr-2" @click="editEdu(props.item)">edit</v-icon>
+                                      <v-icon small @click="deleteEdu(props.item)">delete</v-icon>
+                                    </td>
+                                  </template>
+                                </v-data-table>
+                              </v-flex>
+                            </v-layout>
+                          </v-container>
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-btn
+                            color="red darken-2"
+                            flat
+                            @click="editEducationDialog = false; education = applicant.applicantDetail.applicantEducation"
+                          >Close</v-btn>
+                          <v-btn color="red darken-2" flat @click="editEducation">Submit</v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
                   </v-flex>
                 </v-layout>
 
@@ -695,12 +809,49 @@ import { Printd } from 'printd'
 export default {
   data () {
     return {
-      editPhysicalImpairmentDialog: false
+      editPhysicalImpairmentDialog: false,
+      physicalImpairment: "",
+      editMartialStatusDialog: false,
+      martialStatuses: ["Belum Menikah", "Menikah", "Janda-Duda"],
+      martialStatus: "",
+      martialDateMenu: false,
+      martialDate: "",
+      allowedDates: val => parseInt(val.split('-').join('')) <= parseInt(new Date().toISOString().substr(0, 10).split('-').join('')), // can only choose today or before
+      editEducationDialog: false,
+      editEduDialog: false,
+      editedIndex: -1,
+      editedItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0
+      },
+      defaultItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0
+      },
+      education: [],
+      educationHeader: [
+        { text: 'Jenjang Pendidikan' },
+        { text: 'Institusi' },
+        { text: 'Periode' },
+        { text: 'Jurusan' },
+        { text: 'Peringkat' },
+        { text: 'Keterangan' },
+        { text: 'Aksi' }
+      ]
     }
   },
   computed: {
     applicant () {
       return this.$store.state.applicant.applicant
+    },
+    eduDialogTitle () {
+      return this.editedIndex === -1 ? 'Data Baru' : 'Atur Data'
     }
   },
   methods: {
@@ -729,14 +880,65 @@ export default {
       });
       return fullAddress;
     },
-    editPhysicalImpairment() {
-      
+    editPhysicalImpairment () {
+      const data = {
+        applicant: {
+          physicalImpairment: this.physicalImpairment
+        }
+      }
+      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data)
+        .then(res => {
+          if (res.status == 200) {
+            this.$store.state.applicant.applicant.applicant.applicant.physicalImpairment = this.physicalImpairment
+            this.editPhysicalImpairmentDialog = false;
+          }
+        })
     },
-    editMartialStatus() {
+    editMartialStatus () {
+      const data = {
+        applicant: {
+          martialStatus: this.martialStatus,
+          martialDate: this.martialDate
+        }
+      }
 
+      if (data.applicant.martialStatus == "Belum Menikah") data.applicant.martialDate = ""
+
+      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data)
+        .then(res => {
+          if (res.status == 200) {
+            this.$store.state.applicant.applicant.applicant.applicant.martialStatus = this.martialStatus
+            this.$store.state.applicant.applicant.applicant.applicant.martialDate = this.martialDate
+            this.editMartialStatusDialog = false;
+          }
+        })
     },
-    editEducation() {
-
+    editEdu (item) {
+      this.editedIndex = this.education.indexOf(item)
+      this.editedItem = Object.assign({}, item)
+      this.editEduDialog = true
+    },
+    deleteEdu (item) {
+      const index = this.education.indexOf(item)
+      confirm('Apakah anda yakin ingin menghapus?') && this.education.splice(index, 1)
+    },
+    closeEdu () {
+      this.editEduDialog = false
+      setTimeout(() => {
+        this.editedItem = Object.assign({}, this.defaultItem)
+        this.editedIndex = -1
+      }, 300)
+    },
+    saveEdu () {
+      if (this.editedIndex > -1) {
+        Object.assign(this.education[this.editedIndex], this.editedItem)
+      } else {
+        this.education.push(this.editedItem)
+      }
+      this.closeEdu()
+    },
+    editEducation () {
+ 
     },
     print () {
       const d = new Printd()
@@ -748,7 +950,9 @@ export default {
         th, td { text-align: left; padding: 5px; padding-right: 8px; }
         th { padding: 20px 8px; background-color: #000000; color: #ffffff; }
         tr:nth-child(even) { background-color: #f2f2f2; }
-        .pagebreak { page-break-before: always; }`
+        .pagebreak { page-break-before: always; }
+        .v-input__icon--append .v-icon { display: none; }
+        .v-btn__content .v-icon { display:none; }`
       ]
 
       const scripts = [
