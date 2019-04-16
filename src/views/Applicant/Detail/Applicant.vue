@@ -551,6 +551,77 @@
                                   </template>
                                 </v-data-table>
                               </v-flex>
+                              <v-flex xs12 text-xs-right>
+                                <v-dialog v-model="editEduDialog" max-width="50vw" persistent>
+                                  <template v-slot:activator="{ on }">
+                                    <v-btn color="primary" dark class="mb-2" v-on="on">Data Baru</v-btn>
+                                  </template>
+                                  <v-card>
+                                    <v-card-title>
+                                      <span class="headline">{{ eduDialogTitle }}</span>
+                                    </v-card-title>
+
+                                    <v-card-text>
+                                      <v-container grid-list-md>
+                                        <v-layout wrap>
+                                          <v-flex xs12 md6>
+                                            <v-select
+                                              :items="eduLevels"
+                                              v-model="editedItem.educationType.educationName"
+                                              label="Jenjang Pendidikan"
+                                            ></v-select>
+                                          </v-flex>
+                                          <v-flex xs12 md6>
+                                            <v-text-field
+                                              v-model="editedItem.institution"
+                                              label="Institusi"
+                                            ></v-text-field>
+                                          </v-flex>
+                                          <v-flex xs12 md6>
+                                            <v-text-field
+                                              v-model="editedItem.startYear"
+                                              label="Tahun Awal"
+                                              :rules="[rules.year]"
+                                            ></v-text-field>
+                                          </v-flex>
+                                          <v-flex xs12 md6>
+                                            <v-text-field
+                                              v-model="editedItem.endYear"
+                                              label="Tahun Akhir"
+                                              :rules="[rules.year]"
+                                            ></v-text-field>
+                                          </v-flex>
+                                          <v-flex xs12 md6>
+                                            <v-text-field
+                                              v-model="editedItem.major"
+                                              label="Jurusan"
+                                            ></v-text-field>
+                                          </v-flex>
+                                          <v-flex xs12 md6>
+                                            <v-text-field
+                                              v-model="editedItem.gpa"
+                                              label="Peringkat"
+                                              type="number"
+                                            ></v-text-field>
+                                          </v-flex>
+                                          <v-flex xs12 md6>
+                                            <v-text-field
+                                              v-model="editedItem.description"
+                                              label="Keterangan"
+                                            ></v-text-field>
+                                          </v-flex>
+                                        </v-layout>
+                                      </v-container>
+                                    </v-card-text>
+
+                                    <v-card-actions>
+                                      <v-spacer></v-spacer>
+                                      <v-btn color="blue darken-1" flat @click="closeEdu">Cancel</v-btn>
+                                      <v-btn color="blue darken-1" flat @click="saveEdu">Save</v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                                </v-dialog>
+                              </v-flex>
                             </v-layout>
                           </v-container>
                         </v-card-text>
@@ -821,29 +892,37 @@ export default {
       editEduDialog: false,
       editedIndex: -1,
       editedItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0
+        educationType: { educationName: '' },
+        institution: '',
+        startYear: 0,
+        endYear: 0,
+        major: '',
+        gpa: '',
+        description: ''
       },
       defaultItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0
+        educationType: { educationName: '' },
+        institution: '',
+        startYear: 0,
+        endYear: 0,
+        major: '',
+        gpa: '',
+        description: ''
       },
+      eduLevels: ["SD", "SMP", "SMA", "Diploma", "S1", "S2", "S3"],
       education: [],
       educationHeader: [
-        { text: 'Jenjang Pendidikan' },
-        { text: 'Institusi' },
-        { text: 'Periode' },
-        { text: 'Jurusan' },
-        { text: 'Peringkat' },
-        { text: 'Keterangan' },
-        { text: 'Aksi' }
-      ]
+        { text: 'Jenjang Pendidikan', value: 'educationName' },
+        { text: 'Institusi', value: 'institution' },
+        { text: 'Periode', value: 'startYear' },
+        { text: 'Jurusan', value: 'endYear' },
+        { text: 'Peringkat', value: 'major' },
+        { text: 'Keterangan', value: 'gpa' },
+        { text: 'Aksi', value: 'description' }
+      ],
+      rules: {
+        year: v => v >= 0 || 'Tahun tidak boleh di bawah nol!'
+      }
     }
   },
   computed: {
@@ -852,6 +931,11 @@ export default {
     },
     eduDialogTitle () {
       return this.editedIndex === -1 ? 'Data Baru' : 'Atur Data'
+    }
+  },
+  watch: {
+    editEduDialog (val) {
+      val || this.closeEdu()
     }
   },
   methods: {
@@ -938,7 +1022,8 @@ export default {
       this.closeEdu()
     },
     editEducation () {
- 
+      console.log(this.applicant.applicantDetail.applicantEducation)
+      console.log(this.education)
     },
     print () {
       const d = new Printd()
