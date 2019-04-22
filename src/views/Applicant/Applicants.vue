@@ -1,23 +1,48 @@
 <template>
-  <v-data-table :headers="headers" :items="applicants" class="elevation-1">
-    <template v-slot:items="props">
-      <tr>
-        <td class="custom-td" @click="applicantClicked(props.item)">{{ props.item.fullName }}</td>
-        <td class="text-xs-left">{{ props.item.placeBirth }}</td>
-        <td class="text-xs-left">{{ props.item.dateBirth }}</td>
-        <td class="justify-center layout px-0">
-          <v-btn dark flat color="red darken-2" @click="setDisc(props.item.applicantId)">Perbaharui DISC</v-btn>
-          <v-btn dark flat color="red darken-2" @click="seeReport(props.item.applicantId)">Lihat Laporan</v-btn>
-        </td>
-      </tr>
-    </template>
-  </v-data-table>
+  <v-card>
+    <v-card-title>
+      <h1 class="headline">Daftar Peserta</h1>
+      <v-spacer></v-spacer>
+      <v-text-field v-model="search" append-icon="search" label="Cari" single-line hide-details></v-text-field>
+    </v-card-title>
+    <v-data-table :headers="headers" :items="applicants" class="elevation-1" :search="search">
+      <template v-slot:items="props">
+        <tr>
+          <td class="custom-td" @click="applicantClicked(props.item)">{{ props.item.fullName }}</td>
+          <td class="text-xs-left">{{ props.item.placeBirth }}</td>
+          <td class="text-xs-left">{{ props.item.dateBirth }}</td>
+          <td class="justify-center layout px-0">
+            <v-btn
+              dark
+              flat
+              color="red darken-2"
+              @click="setDisc(props.item.applicantId)"
+            >Perbaharui DISC</v-btn>
+            <v-btn
+              dark
+              flat
+              color="red darken-2"
+              @click="seeReport(props.item.applicantId)"
+            >Lihat Laporan</v-btn>
+          </td>
+        </tr>
+      </template>
+      <template v-slot:no-results>
+        <v-alert
+          :value="true"
+          color="error"
+          icon="warning"
+        >Tidak ada hasil yang ditemukan dengan kata kunci "{{ search }}".</v-alert>
+      </template>
+    </v-data-table>
+  </v-card>
 </template>
 
 <script>
 export default {
   data () {
     return {
+      search: '',
       headers: [
         {
           text: 'Nama Pelamar',
@@ -42,7 +67,7 @@ export default {
     setDisc (applicantId) {
       this.$router.push({ name: 'discResult', params: { applicantId: applicantId } })
     },
-    seeReport(applicantId){
+    seeReport (applicantId) {
       this.$router.push({ name: 'report', params: { applicantId: applicantId } })
     }
   },
