@@ -467,9 +467,12 @@
               <v-container grid-list-xs>
                 <v-layout row wrap>
                   <v-flex xs12 text-xs-right>
-                    <v-btn dark large color="red darken-2" @click="print">
-                      <v-icon dark>print</v-icon>
+                    <v-btn large color="red darken-2" @click="print" :disabled="!applicantJob || !applicantJob.trim()">
+                      <v-icon color="white">print</v-icon>
                     </v-btn>
+                  </v-flex>
+                  <v-flex xs12 text-xs-right style="color: red" v-if="!applicantJob || !applicantJob.trim()">
+                    * Jabatan yang dilamar mohon diisi
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -494,7 +497,7 @@ export default {
       applicantJob: "",
       applicantReceiver: "Tokoonderdil",
       recommendedOption: "",
-      hrdNote: ""
+      hrdNote: "",
     }
   },
   computed: {
