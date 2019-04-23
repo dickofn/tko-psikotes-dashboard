@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-text-field v-model="search" append-icon="search" label="Cari" single-line hide-details></v-text-field>
     </v-card-title>
-    <v-data-table :headers="headers" :items="applicants" class="elevation-1" :search="search">
+    <v-data-table :headers="headers" :items="applicants" class="elevation-1" :search="search" :rows-per-page-items="[10,25,{'text':'$vuetify.dataIterator.rowsPerPageAll','value':-1}]">
       <template v-slot:items="props">
         <tr>
           <td class="custom-td" @click="applicantClicked(props.item)">{{ props.item.fullName }}</td>
