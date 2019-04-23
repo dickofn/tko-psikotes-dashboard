@@ -441,7 +441,7 @@
                         <tr>
                           <td>
                             <div class="sign-field">
-                              <hr>(Head / Syperior / User)
+                              <hr>(Head / Superior / User)
                             </div>
                           </td>
                           <td>
