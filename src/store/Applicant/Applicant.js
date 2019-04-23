@@ -16,7 +16,7 @@ export default {
   actions: {
     getApplicants({ commit }) {
       commit("UPDATE_LOADING", true);
-      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/all/")
+      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/all")
         .then(res => {
           commit("UPDATE_APPLICANTS", res.data.data);
           commit("UPDATE_LOADING", false);
