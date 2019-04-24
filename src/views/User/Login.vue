@@ -9,19 +9,28 @@
           </v-toolbar>
           <v-card-text>
             <v-form>
-              <v-text-field prepend-icon="person" name="username" label="Username" type="text"></v-text-field>
+              <v-text-field
+                prepend-icon="person"
+                name="username"
+                label="Username"
+                type="text"
+                v-model="username"
+                @keyup.enter="login"
+              ></v-text-field>
               <v-text-field
                 id="password"
                 prepend-icon="lock"
                 name="password"
                 label="Password"
                 type="password"
+                v-model="password"
+                @keyup.enter="login"
               ></v-text-field>
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn dark color="red darken-2">Masuk</v-btn>
+            <v-btn dark color="red darken-2" @click="login">Masuk</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -37,5 +46,13 @@ export default {
       password: ""
     }
   },
+  methods: {
+    login () {
+      let data = { username: this.username, password: this.password }
+      this.$store.dispatch('login', data)
+        .then(() => this.$router.push({ name: 'applicants' }))
+        .catch(e => console.log(e))
+    }
+  }
 }
 </script>

@@ -4,20 +4,20 @@
       <!-- HEADER START -->
       <v-navigation-drawer fixed v-model="drawer" app>
         <v-list dense>
-          <v-list-tile @click="$router.push({name : 'home'})">
-            <v-list-tile-action>
-              <v-icon>home</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>Beranda</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
           <v-list-tile @click="$router.push({name : 'applicants'})">
             <v-list-tile-action>
               <v-icon>people</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Data Pelamar</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile @click="logout" v-if="isLoggedIn">
+            <v-list-tile-action>
+              <v-icon>logout</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Logout</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -54,13 +54,32 @@ export default {
       drawer: null
     }
   },
+  computed: {
+    isLoggedIn () { return this.$store.getters.isLoggedIn }
+  },
   methods: {
+    logout () {
+      this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+    }
+  },
+  created () {
+    this.$http.interceptors.response.use(undefined, err => {
+      return new Promise(() => {
+        if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+          this.$store.dispatch('logout')
+        }
+        throw err;
+      });
+    });
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.footer--custom{
+.footer--custom {
   padding: 0 16px;
 }
 </style>

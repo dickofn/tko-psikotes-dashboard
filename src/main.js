@@ -1,25 +1,30 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
+import Vue from "vue";
+import Vuetify from "vuetify";
+import "vuetify/dist/vuetify.min.css";
 
-import axios from 'axios'
-import VueAxios from 'vue-axios' 
+import axios from "axios";
+import VueAxios from "vue-axios";
 
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import './registerServiceWorker'
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import "./registerServiceWorker";
 
-import SmartTable from 'vuejs-smart-table'
+import SmartTable from "vuejs-smart-table";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.use(Vuetify)
-Vue.use(VueAxios, axios)
-Vue.use(SmartTable)
+Vue.use(Vuetify);
+Vue.use(VueAxios, axios);
+Vue.use(SmartTable);
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h(App),
+  created() {
+    if (store.getters.isLoggedIn)
+      axios.defaults.headers.common["Authorization"] =
+        "Bearer " + store.state.user.token;
+  }
+}).$mount("#app");

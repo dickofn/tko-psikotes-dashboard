@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
+import store from './store.js'
 
-import Login from './views/User/Login.vue'
+import Login from "./views/User/Login.vue";
 
 import Applicants from "./views/Applicant/Applicants.vue";
 import Applicant from "./views/Applicant/Detail/Applicant.vue";
@@ -15,30 +16,34 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/", 
+      path: "/",
       name: "login",
       component: Login,
       alias: "/login"
     },
     {
-      path: "/applicant", 
+      path: "/applicant",
       name: "applicants",
-      component: Applicants
+      component: Applicants,
+      meta: { requiresAuth: true }
     },
     {
-      path: "/applicant/:applicantId", 
+      path: "/applicant/:applicantId",
       name: "applicant",
-      component: Applicant
+      component: Applicant,
+      meta: { requiresAuth: true }
     },
     {
       path: "/applicant/:applicantId/result/disc",
       name: "discResult",
-      component: DiscResult
+      component: DiscResult,
+      meta: { requiresAuth: true }
     },
     {
       path: "/applicant/:applicantId/result/report",
       name: "report",
-      component: Report
+      component: Report,
+      meta: { requiresAuth: true }
     },
     {
       path: "/about",
@@ -52,5 +57,16 @@ const router = new Router({
   ]
 });
 
-export default router
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login') 
+  } else {
+    next() 
+  }
+})
 
+export default router;
