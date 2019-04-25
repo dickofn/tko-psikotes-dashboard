@@ -1,5 +1,9 @@
 import Axios from "axios";
 
+const auth = {
+  headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+};
+
 export default {
   state: {
     applicants: [],
@@ -16,7 +20,7 @@ export default {
   actions: {
     getApplicants({ commit }) {
       commit("UPDATE_LOADING", true);
-      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/all")
+      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/all", auth)
         .then(res => {
           commit("UPDATE_APPLICANTS", res.data.data);
           commit("UPDATE_LOADING", false);
@@ -27,7 +31,7 @@ export default {
     },
     getApplicant({ commit }, applicantId) {
       commit("UPDATE_LOADING", true);
-      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/" + applicantId)
+      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/" + applicantId, auth)
         .then(res => {
           commit("UPDATE_APPLICANT", res.data.data);
           commit("UPDATE_LOADING", false);

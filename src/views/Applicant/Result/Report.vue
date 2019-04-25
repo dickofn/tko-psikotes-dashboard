@@ -467,13 +467,21 @@
               <v-container grid-list-xs>
                 <v-layout row wrap>
                   <v-flex xs12 text-xs-right>
-                    <v-btn large color="red darken-2" @click="print" :disabled="!applicantJob || !applicantJob.trim()">
+                    <v-btn
+                      large
+                      color="red darken-2"
+                      @click="print"
+                      :disabled="!applicantJob || !applicantJob.trim()"
+                    >
                       <v-icon color="white">print</v-icon>
                     </v-btn>
                   </v-flex>
-                  <v-flex xs12 text-xs-right style="color: red" v-if="!applicantJob || !applicantJob.trim()">
-                    * Jabatan yang dilamar mohon diisi
-                  </v-flex>
+                  <v-flex
+                    xs12
+                    text-xs-right
+                    style="color: red"
+                    v-if="!applicantJob || !applicantJob.trim()"
+                  >* Jabatan yang dilamar mohon diisi</v-flex>
                 </v-layout>
               </v-container>
             </v-card-text>
@@ -682,7 +690,11 @@ export default {
         memo: this.hrdNote
       }
 
-      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/report/new", data)
+      const auth = {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      };
+
+      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/report/new", data, auth)
         .then(res => {
           if (res.status == 200) {
             d.print(this.$el, styles, scripts);

@@ -18,13 +18,25 @@ Vue.use(Vuetify);
 Vue.use(VueAxios, axios);
 Vue.use(SmartTable);
 
+if (store.getters.isLoggedIn) {
+  axios
+    .post(process.env.VUE_APP_API_URL + "/user/validation", {
+      token: store.state.user.token
+    })
+    .catch(e => {
+      if (
+        e.response.status === 401 &&
+        e.response.config &&
+        !e.response.config.__isRetryRequest
+      ) {
+        store.dispatch("logout");
+        router.push({ name: "login" });
+      }
+    });
+}
+
 new Vue({
   router,
   store,
-  render: h => h(App),
-  created() {
-    if (store.getters.isLoggedIn)
-      axios.defaults.headers.common["Authorization"] =
-        "Bearer " + store.state.user.token;
-  }
+  render: h => h(App)
 }).$mount("#app");

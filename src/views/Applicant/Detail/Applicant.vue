@@ -1003,7 +1003,12 @@ export default {
           physicalImpairment: this.physicalImpairment
         }
       }
-      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data)
+
+      const auth = {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      };
+
+      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data, auth)
         .then(res => {
           if (res.status == 200) {
             this.$store.state.applicant.applicant.applicant.applicant.physicalImpairment = this.physicalImpairment
@@ -1021,7 +1026,11 @@ export default {
 
       if (data.applicant.martialStatus == "Belum Menikah") { data.applicant.martialDate = ""; this.martialDate = "" }
 
-      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data)
+      const auth = {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      };
+
+      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data, auth)
         .then(res => {
           if (res.status == 200) {
             this.$store.state.applicant.applicant.applicant.applicant.martialStatus = this.martialStatus
@@ -1084,7 +1093,11 @@ export default {
         applicantEducation: applicantEducation
       }
 
-      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/detail/" + this.$route.params.applicantId, data)
+      const auth = {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      };
+
+      this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/detail/" + this.$route.params.applicantId, data, auth)
         .then(res => {
           if (res.status == 200) {
             this.$store.state.applicant.applicant.applicantDetail.applicantEducation = JSON.parse(JSON.stringify(this.education))

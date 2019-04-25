@@ -7,15 +7,14 @@
             <v-toolbar-title>Masuk Dashboard</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
-          <v-card-text>
-            <v-form>
+          <v-form @submit.prevent="login">
+            <v-card-text>
               <v-text-field
                 prepend-icon="person"
                 name="username"
                 label="Username"
                 type="text"
                 v-model="username"
-                @keyup.enter="login"
               ></v-text-field>
               <v-text-field
                 id="password"
@@ -24,14 +23,13 @@
                 label="Password"
                 type="password"
                 v-model="password"
-                @keyup.enter="login"
               ></v-text-field>
-            </v-form>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn dark color="red darken-2" @click="login">Masuk</v-btn>
-          </v-card-actions>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn dark color="red darken-2" type="submit">Masuk</v-btn>
+            </v-card-actions>
+          </v-form>
         </v-card>
       </v-flex>
     </v-layout>

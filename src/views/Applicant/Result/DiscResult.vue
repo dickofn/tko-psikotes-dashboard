@@ -40,7 +40,7 @@
                   <v-btn
                     color="red darken-2 white--text"
                     @click="submit"
-                    :disabled="isDisabledSubmit"                    
+                    :disabled="isDisabledSubmit"
                   >Submit</v-btn>
                 </v-flex>
               </v-layout>
@@ -60,9 +60,7 @@
             </v-container>
           </v-card-text>
 
-          <v-card-text v-else>
-            Tidak ada data DISC!
-          </v-card-text>
+          <v-card-text v-else>Tidak ada data DISC!</v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
@@ -166,7 +164,12 @@ export default {
         score: this.discCode,
         remarks: this.discResult
       }
-      this.axios.post(process.env.VUE_APP_API_URL + "/exam/result/set/disc", data)
+
+      const auth = {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      };
+
+      this.axios.post(process.env.VUE_APP_API_URL + "/exam/result/set/disc", data, auth)
         .then(res => {
           if (res.status == 200) {
             this.dialogSuccess = true
@@ -181,7 +184,11 @@ export default {
     discTable
   },
   created () {
-    this.axios.get(process.env.VUE_APP_API_URL + "/exam/score/disc/" + this.$route.params.applicantId)
+    const auth = {
+      headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+    };
+
+    this.axios.get(process.env.VUE_APP_API_URL + "/exam/score/disc/" + this.$route.params.applicantId, auth)
       .then(res => {
         const ans = res.data.data
         this.selectedMost.d = ans.scoreM_D
@@ -198,7 +205,12 @@ export default {
         this.selectedChange.c = ans.scoreC_C
         if (!ans.debug) {
           this.isLoaded = true;
-          this.axios.get(process.env.VUE_APP_API_URL + "/exam/result/get/" + this.$route.params.applicantId)
+
+          const auth = {
+            headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+          };
+
+          this.axios.get(process.env.VUE_APP_API_URL + "/exam/result/get/" + this.$route.params.applicantId, auth)
             .then(res => {
               const examResult = res.data.data.examResult
               examResult.forEach(el => {

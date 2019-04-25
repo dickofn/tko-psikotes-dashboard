@@ -38,9 +38,9 @@ export default {
     logout({ commit }) {
       return new Promise(resolve => {
         commit("UPDATE_LOADING", true);
-        commit("CLEAR_USER");
         localStorage.removeItem("token");
         delete Axios.defaults.headers.common["Authorization"];
+        commit("CLEAR_USER");
         resolve();
       });
     }

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import store from './store.js'
+import store from "./store.js";
 
 import Login from "./views/User/Login.vue";
 
@@ -17,9 +17,10 @@ const router = new Router({
   routes: [
     {
       path: "/",
+      alias: "/login",
       name: "login",
       component: Login,
-      alias: "/login"
+      meta: { isLogged: true }
     },
     {
       path: "/applicant",
@@ -58,15 +59,23 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
-      next()
-      return
+      next();
+      return;
     }
-    next('/login') 
+    next("/login");
   } else {
-    next() 
+    next();
   }
-})
+  if (to.matched.some(record => record.meta.isLogged)) {
+    if (store.getters.isLoggedIn) {
+      next("/applicant");
+      return;
+    }
+  } else {
+    next();
+  }
+});
 
 export default router;
