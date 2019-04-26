@@ -631,12 +631,12 @@ export default {
   watch: {
     result (v) {
       if (v) {
-        this.applicantCheckDate = this.result.report.reportCheck
-        this.applicantReceiver = this.result.report.reportFor
-        this.applicantPurpose = this.result.report.reportPurpose
-        this.applicantJob = this.result.report.applicantPositionFor
-        this.recommendedOption = this.result.report.recommendation
-        this.hrdNote = this.result.report.memo
+        if (this.result.report.reportCheck != null) this.applicantCheckDate = this.result.report.reportCheck
+        if (this.result.report.reportFor != null) this.applicantReceiver = this.result.report.reportFor
+        if (this.result.report.reportPurpose != null) this.applicantPurpose = this.result.report.reportPurpose
+        if (this.result.report.applicantPositionFor != null) this.applicantJob = this.result.report.applicantPositionFor
+        if (this.result.report.recommendation != null)this.recommendedOption = this.result.report.recommendation
+        if (this.result.report.memo != null) this.hrdNote = this.result.report.memo
       }
     }
   },
