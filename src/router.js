@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import store from "./store.js";
+import Axios from "axios";
 
 import Login from "./views/User/Login.vue";
 
@@ -61,6 +62,18 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
+      Axios.post(process.env.VUE_APP_API_URL + "/user/validation", {
+        token: store.state.user.token
+      }).catch(e => {
+        if (
+          e.response.status === 401 &&
+          e.response.config &&
+          !e.response.config.__isRetryRequest
+        ) {
+          store.dispatch("logout");
+          next("/login");
+        }
+      });
       next();
       return;
     }
