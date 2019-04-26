@@ -128,7 +128,7 @@ export default {
       else if (this.discCode == "DC") return "Challenger"
       else if (this.discCode == "DIC") return "Chancellor"
       else if (this.discCode == "DIS") return "Director"
-      else if (this.discCode == "Pure I") return "Director"
+      else if (this.discCode == "Pure I") return "Communicator"
       else if (this.discCode == "IC") return "Assessor"
       else if (this.discCode == "ICS") return "Governor"
       else if (this.discCode == "ID") return "Persuader"
