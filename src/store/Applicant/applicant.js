@@ -19,19 +19,26 @@ export default {
   },
   actions: {
     getApplicants({ commit }) {
-      commit("UPDATE_LOADING", true);
-      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/all", auth)
-        .then(res => {
-          commit("UPDATE_APPLICANTS", res.data.data);
-          commit("UPDATE_LOADING", false);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      return new Promise((resolve, reject) => {
+        commit("UPDATE_LOADING", true);
+        Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/all", auth)
+          .then(res => {
+            commit("UPDATE_APPLICANTS", res.data.data);
+            commit("UPDATE_LOADING", false);
+            resolve(res)
+          })
+          .catch(e => {
+            commit("UPDATE_LOADING", false);
+            reject(e)
+          });
+      });
     },
     getApplicant({ commit }, applicantId) {
       commit("UPDATE_LOADING", true);
-      Axios.get(process.env.VUE_APP_API_URL + "/applicant/get/" + applicantId, auth)
+      Axios.get(
+        process.env.VUE_APP_API_URL + "/applicant/get/" + applicantId,
+        auth
+      )
         .then(res => {
           commit("UPDATE_APPLICANT", res.data.data);
           commit("UPDATE_LOADING", false);

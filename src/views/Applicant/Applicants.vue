@@ -71,8 +71,11 @@ export default {
       this.$router.push({ name: 'report', params: { applicantId: applicantId } })
     }
   },
-  created () {
+  created(){
     this.$store.dispatch('getApplicants')
+    .catch(e => {
+      console.log(e)
+    })
   }
 }
 </script>
