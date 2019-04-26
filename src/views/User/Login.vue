@@ -48,7 +48,7 @@ export default {
     login () {
       let data = { username: this.username, password: this.password }
       this.$store.dispatch('login', data)
-        .then(() => this.$router.push({ name: 'applicants' }))
+        .then(() => this.$router.go())
         .catch(e => console.log(e))
     }
   }
