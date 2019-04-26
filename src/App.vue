@@ -66,7 +66,22 @@ export default {
     }
   },
   created () {
-    
+    if (this.$store.getters.isLoggedIn) {
+      this.axios
+        .post(process.env.VUE_APP_API_URL + "/user/validation", {
+          token: this.$store.state.user.token
+        })
+        .catch(e => {
+          if (
+            e.response.status === 401 &&
+            e.response.config &&
+            !e.response.config.__isRetryRequest
+          ) {
+            this.$store.dispatch("logout");
+            this.$router.push({ name: "login" });
+          }
+        });
+    }
   }
 }
 </script>
