@@ -488,6 +488,59 @@
           </div>
         </v-card>
       </v-flex>
+      <div class="printDisc" id="printDisc">
+        <v-flex xs12>
+          <v-card v-if="!disc.name">
+            <v-card-text>
+              <v-container grid-list-xs>
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <h1 class="headline">Tidak ada data DISC</h1>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+          </v-card>
+          <v-card v-else>
+            <v-card-text>
+              <v-container grid-list-xs>
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <v-text-field
+                      label="Nama Lengkap"
+                      name="applicantName"
+                      :value="result.applicantData.fullName"
+                      readonly
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs6>
+                    <v-text-field label="Profil DISC" name="discName" :value="disc.name" readonly></v-text-field>
+                  </v-flex>
+                  <v-flex xs6>
+                    <v-text-field label="Tipe DISC" name="discCode" :value="disc.code" readonly></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <p style="white-space: pre-line">{{ discDesc.discText }}</p>
+                    <br>
+                    <p style="white-space: pre-line">{{ discDesc.footerText }}</p>
+                  </v-flex>
+                </v-layout>
+                <div class="print">
+                  <v-layout row wrap>
+                    <v-flex xs12 text-xs-right>
+                      <v-btn large color="red darken-2" @click="printDisc">
+                        <v-icon color="white">print</v-icon>
+                      </v-btn>
+                    </v-flex>
+                  </v-layout>
+                </div>
+              </v-container>
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </div>
     </v-layout>
   </v-container>
 </template>
@@ -506,6 +559,7 @@ export default {
       applicantReceiver: "Tokoonderdil",
       recommendedOption: "",
       hrdNote: "",
+      discDesc: ""
     }
   },
   computed: {
@@ -635,7 +689,7 @@ export default {
         if (this.result.report.reportFor != null) this.applicantReceiver = this.result.report.reportFor
         if (this.result.report.reportPurpose != null) this.applicantPurpose = this.result.report.reportPurpose
         if (this.result.report.applicantPositionFor != null) this.applicantJob = this.result.report.applicantPositionFor
-        if (this.result.report.recommendation != null)this.recommendedOption = this.result.report.recommendation
+        if (this.result.report.recommendation != null) this.recommendedOption = this.result.report.recommendation
         if (this.result.report.memo != null) this.hrdNote = this.result.report.memo
       }
     }
@@ -700,10 +754,61 @@ export default {
             d.print(this.$el, styles, scripts);
           }
         })
+    },
+    printDisc () {
+      const d = new Printd()
+      const styles = [
+        'https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',
+        `.padding-cheat { padding : 0 !important; margin : 0 !important }
+          .print { display: none }
+          .scrollable { overflow-x: auto; }
+          .tableIntro { border: 1px solid #ddd; width: 100%; border-collapse: collapse; text-align: center; }
+          .tableIntro td, .tableIntro th { padding: 1px 5px; border: 1px solid #ddd; }
+          .tableMain { border: 1px solid #ddd; width: 100%; border-collapse: collapse; }
+          .tableMain .sub-thead { text-align: left; background-color: #555; color: #fff; }
+          .tableMain td, .tableMain th { padding: 1px 5px; border: 1px solid #ddd; }
+          .tableMain .fixed-width { width: 30px; }
+          .tableDisc { padding: 1px 5px; border: 1px solid #ddd; }
+          .flex-space-between { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+          .flex-space-between label { padding-left: 10px; }
+          .score-tbody .active { background-color: #d32f2f; }
+          .tableForm { width: 100%; margin-bottom: 20px; }
+          .tableForm td, .tableForm th { padding: 1px 5px; }
+          .tableForm .question { width: 25%; }
+          .tableForm .separator { width: 1%; }
+          .tableForm .answer { width: 74%; border-bottom: 1px solid #000; }
+          .tableSign { border: 1px solid #000; width: 100%; border-collapse: collapse; }
+          .tableSign td, .tableSign th { width: 33%; padding: 1px 5px; border: 1px solid #000; }
+          .tableSign .sign-field { padding: 10px 10px; padding-top: 150px; text-align: center; }`
+      ]
+      const scripts = [
+        'document.body.style.zoom=1.8;this.blur();'
+      ]
+      const el = document.getElementById('printDisc')
+      d.print(el, styles, scripts);
     }
   },
   created () {
     this.$store.dispatch('getResult', this.$route.params.applicantId)
+      .then(() => {
+        const auth = {
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+        }
+        const data = {
+          discProfileCode: this.disc.code,
+          language: "ID"
+        }
+        this.axios.post(process.env.VUE_APP_API_URL + "/exam/result/get/disc", data, auth)
+          .then(res => {
+            this.discDesc = res.data.data
+          })
+          .catch(e => {
+            console.log(e)
+          })
+      })
+      .catch(e => {
+        console.log(e)
+      })
   },
   beforeDestroy () {
     this.$store.dispatch('clearResult')
