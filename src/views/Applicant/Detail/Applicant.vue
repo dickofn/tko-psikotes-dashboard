@@ -506,8 +506,8 @@
 
               <v-card-title primary-title>
                 <h1 class="headline">Riwayat Pendidikan</h1>&nbsp;
-                <v-icon
-                  @click="editEducationDialog = true; education = JSON.parse(JSON.stringify(applicant.applicantDetail.applicantEducation))"
+                <v-icon 
+                  @click="editEducationDialog = true; education = JSON.parse(JSON.stringify(applicant.applicantDetail.applicantEducation))" class="editGone"
                 >edit</v-icon>
               </v-card-title>
               <v-card-text>
@@ -1117,7 +1117,8 @@ export default {
         tr:nth-child(even) { background-color: #f2f2f2; }
         .pagebreak { page-break-before: always; }
         .v-input__icon--append .v-icon { display: none; }
-        .v-btn__content .v-icon { display:none; }`
+        .v-btn__content .v-icon { display: none; }
+        .editGone { display: none; }`
       ]
 
       const scripts = [
