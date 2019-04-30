@@ -506,8 +506,9 @@
 
               <v-card-title primary-title>
                 <h1 class="headline">Riwayat Pendidikan</h1>&nbsp;
-                <v-icon 
-                  @click="editEducationDialog = true; education = JSON.parse(JSON.stringify(applicant.applicantDetail.applicantEducation))" class="editGone"
+                <v-icon
+                  @click="editEducationDialog = true; education = JSON.parse(JSON.stringify(applicant.applicantDetail.applicantEducation))"
+                  class="editGone"
                 >edit</v-icon>
               </v-card-title>
               <v-card-text>
@@ -879,6 +880,321 @@
                   </v-layout>
                 </v-container>
               </v-card-text>
+            </v-card>
+          </div>
+
+          <v-card>
+            <div class="pagebreak" id="page--three">
+              <v-card-title primary-title>
+                <h1 class="headline">Lain-lain</h1>
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda pernah melamar di perusahaan ini sebelumnya. Kapan & sebagai apa?
+                      <b>{{applicant.applicantQuestion[0].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[0].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[0].remarks"
+                        v-if="applicant.applicantQuestion[0].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah saat ini anda melamar di perusahaan lain? Sebagai posisi apa?
+                      <b>{{applicant.applicantQuestion[1].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[1].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[1].remarks"
+                        v-if="applicant.applicantQuestion[1].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda terikat kontrak dengan perusahaan tempat bekerja anda saat ini?
+                      <b>{{applicant.applicantQuestion[2].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[2].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[2].remarks"
+                        v-if="applicant.applicantQuestion[2].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda memiliki pekerjaan part time? Dimana dan sebagai apa?
+                      <b>{{applicant.applicantQuestion[3].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[3].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[3].remarks"
+                        v-if="applicant.applicantQuestion[3].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda keberatan bila kami meminta referensi pada perusahaan anda sebelumnya?
+                      <b>{{applicant.applicantQuestion[4].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[4].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[4].remarks"
+                        v-if="applicant.applicantQuestion[4].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda memiliki teman atau saudara yang bekerja di group / perusahaan ini? Sebutkan nama dan hubungan dengan anda
+                      <b>{{applicant.applicantQuestion[5].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[5].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[5].remarks"
+                        v-if="applicant.applicantQuestion[5].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda memiliki teman atau saudara yang bekerja di industri rokok dan distribusi rokok atau sejenis? Sebutkan nama, nama perusahaan, jabatan dan hubungan dengan anda
+                      <b>{{applicant.applicantQuestion[6].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[6].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[6].remarks"
+                        v-if="applicant.applicantQuestion[6].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda pernah mengalami sakit keras atau menjalani perawatan yang intensif? Bila ya, kapan dan sebutkan penyakitnya
+                      <b>{{applicant.applicantQuestion[7].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[7].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[7].remarks"
+                        v-if="applicant.applicantQuestion[7].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda pernah mengalami kecelakaan? Bila ya kapan dan apa akibat yang anda rasakan sekarang?
+                      <b>{{applicant.applicantQuestion[8].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[8].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[8].remarks"
+                        v-if="applicant.applicantQuestion[8].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda pernah menjalani pemeriksaan Psikologis? Bilamana, dimana dan untuk tujuan apa?
+                      <b>{{applicant.applicantQuestion[9].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[9].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[9].remarks"
+                        v-if="applicant.applicantQuestion[9].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Apakah anda pernah berurusan dengan polisi karena tindakan tertentu?
+                      <b>{{applicant.applicantQuestion[10].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[10].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[10].remarks"
+                        v-if="applicant.applicantQuestion[10].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Bila diterima bersediakah anda bertugas ke luar kota?
+                      <b>{{applicant.applicantQuestion[11].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[11].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[11].remarks"
+                        v-if="applicant.applicantQuestion[11].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Bila diterima apakah anda bersedia ditempatkan di seluruh daerah di Indonesia?
+                      <b>{{applicant.applicantQuestion[12].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                    </v-flex>
+                    <v-flex md8 xs12 mt-2>
+                      <v-text-field
+                        label="Penjelasan"
+                        :value="applicant.applicantQuestion[12].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[12].remarks"
+                        v-if="applicant.applicantQuestion[12].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Macam pekerjaan atau jabatan apakah yang sesuai dengan cita cita anda?</p>
+                    </v-flex>
+                    <v-flex md8 xs12>
+                      <v-text-field
+                        :value="applicant.applicantQuestion[13].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[13].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p
+                        class="margin-padding-cheat"
+                      >Macam pekerjaan atau jabatan apakah yang tidak sesuai dengan cita cita anda?</p>
+                    </v-flex>
+                    <v-flex md8 xs12>
+                      <v-text-field
+                        :value="applicant.applicantQuestion[14].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[14].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p class="margin-padding-cheat">Bila diterima, kapan anda dapat mulai bekerja?</p>
+                    </v-flex>
+                    <v-flex md8 xs12>
+                      <v-text-field
+                        :value="applicant.applicantQuestion[15].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[15].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p class="margin-padding-cheat">Besar gaji yang anda harapkan?</p>
+                    </v-flex>
+                    <v-flex md8 xs12>
+                      <v-text-field
+                        :value="applicant.applicantQuestion[16].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[16].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex md8 xs12>
+                      <p class="margin-padding-cheat">Tambahkan informasi tambahan (jika ada)</p>
+                    </v-flex>
+                    <v-flex md8 xs12>
+                      <v-text-field
+                        :value="applicant.applicantQuestion[17].remarks"
+                        readonly
+                        :disabled="!applicant.applicantQuestion[17].remarks"
+                        class="margin-padding-cheat"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card-text>
               <div class="print" v-if="applicant">
                 <v-card-text>
                   <v-container grid-list-xs>
@@ -892,8 +1208,8 @@
                   </v-container>
                 </v-card-text>
               </div>
-            </v-card>
-          </div>
+            </div>
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>
@@ -1109,7 +1425,7 @@ export default {
       const d = new Printd()
       const styles = [
         'https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',
-        `.print { visibility: hidden }
+        `.print { display: none }
         table { border-collapse: collapse; border-spacing: 0; width: 100%; border: 1px solid #ddd; }
         thead { border: 1px solid #ddd; }
         th, td { text-align: left; padding: 5px; padding-right: 8px; }
@@ -1118,7 +1434,8 @@ export default {
         .pagebreak { page-break-before: always; }
         .v-input__icon--append .v-icon { display: none; }
         .v-btn__content .v-icon { display: none; }
-        .editGone { display: none; }`
+        .editGone { display: none; }
+        .margin-padding-cheat { margin: 0; padding: 0; }`
       ]
 
       const scripts = [
@@ -1173,6 +1490,11 @@ export default {
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+}
+
+.margin-padding-cheat {
+  margin: 0;
+  padding: 0;
 }
 
 .pagebreak {
