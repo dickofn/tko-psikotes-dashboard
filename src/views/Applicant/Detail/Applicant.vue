@@ -903,7 +903,7 @@
                         :value="applicant.applicantQuestion[0].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[0].remarks"
-                        v-if="applicant.applicantQuestion[0].remarks"
+                        v-if="applicant.applicantQuestion[0].remarks && applicant.applicantQuestion[0].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -921,7 +921,7 @@
                         :value="applicant.applicantQuestion[1].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[1].remarks"
-                        v-if="applicant.applicantQuestion[1].remarks"
+                        v-if="applicant.applicantQuestion[1].remarks && applicant.applicantQuestion[1].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -939,7 +939,7 @@
                         :value="applicant.applicantQuestion[2].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[2].remarks"
-                        v-if="applicant.applicantQuestion[2].remarks"
+                        v-if="applicant.applicantQuestion[2].remarks && applicant.applicantQuestion[2].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -957,7 +957,7 @@
                         :value="applicant.applicantQuestion[3].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[3].remarks"
-                        v-if="applicant.applicantQuestion[3].remarks"
+                        v-if="applicant.applicantQuestion[3].remarks && applicant.applicantQuestion[3].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -975,7 +975,7 @@
                         :value="applicant.applicantQuestion[4].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[4].remarks"
-                        v-if="applicant.applicantQuestion[4].remarks"
+                        v-if="applicant.applicantQuestion[4].remarks && applicant.applicantQuestion[4].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -993,7 +993,7 @@
                         :value="applicant.applicantQuestion[5].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[5].remarks"
-                        v-if="applicant.applicantQuestion[5].remarks"
+                        v-if="applicant.applicantQuestion[5].remarks && applicant.applicantQuestion[5].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -1011,7 +1011,7 @@
                         :value="applicant.applicantQuestion[6].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[6].remarks"
-                        v-if="applicant.applicantQuestion[6].remarks"
+                        v-if="applicant.applicantQuestion[6].remarks && applicant.applicantQuestion[6].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -1029,7 +1029,7 @@
                         :value="applicant.applicantQuestion[7].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[7].remarks"
-                        v-if="applicant.applicantQuestion[7].remarks"
+                        v-if="applicant.applicantQuestion[7].remarks && applicant.applicantQuestion[7].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -1047,7 +1047,7 @@
                         :value="applicant.applicantQuestion[8].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[8].remarks"
-                        v-if="applicant.applicantQuestion[8].remarks"
+                        v-if="applicant.applicantQuestion[8].remarks && applicant.applicantQuestion[8].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -1065,7 +1065,7 @@
                         :value="applicant.applicantQuestion[9].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[9].remarks"
-                        v-if="applicant.applicantQuestion[9].remarks"
+                        v-if="applicant.applicantQuestion[9].remarks && applicant.applicantQuestion[9].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -1083,7 +1083,7 @@
                         :value="applicant.applicantQuestion[10].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[10].remarks"
-                        v-if="applicant.applicantQuestion[10].remarks"
+                        v-if="applicant.applicantQuestion[10].remarks && applicant.applicantQuestion[10].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -1101,7 +1101,7 @@
                         :value="applicant.applicantQuestion[11].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[11].remarks"
-                        v-if="applicant.applicantQuestion[11].remarks"
+                        v-if="applicant.applicantQuestion[11].remarks && applicant.applicantQuestion[11].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
@@ -1119,7 +1119,7 @@
                         :value="applicant.applicantQuestion[12].remarks"
                         readonly
                         :disabled="!applicant.applicantQuestion[12].remarks"
-                        v-if="applicant.applicantQuestion[12].remarks"
+                        v-if="applicant.applicantQuestion[12].remarks && applicant.applicantQuestion[12].remarks.trim() !=''"
                         class="margin-padding-cheat"
                       ></v-text-field>
                     </v-flex>
