@@ -5,9 +5,17 @@
       <v-spacer></v-spacer>
       <v-text-field v-model="search" append-icon="search" label="Cari" single-line hide-details></v-text-field>
     </v-card-title>
-    <v-data-table :headers="headers" :items="applicants" class="elevation-1" :search="search" :rows-per-page-items="[10,25,{'text':'$vuetify.dataIterator.rowsPerPageAll','value':-1}]">
+    <v-data-table
+      :headers="headers"
+      :items="applicants"
+      class="elevation-1"
+      :search="search"
+      :pagination.sync="pagination"
+      :rows-per-page-items="[10,25,{'text':'$vuetify.dataIterator.rowsPerPageAll','value':-1}]"
+    >
       <template v-slot:items="props">
         <tr>
+          <td class="custom-td" @click="applicantClicked(props.item)">{{ props.item.examDate }}</td>
           <td class="custom-td" @click="applicantClicked(props.item)">{{ props.item.fullName }}</td>
           <td class="text-xs-left">{{ props.item.placeBirth }}</td>
           <td class="text-xs-left">{{ props.item.dateBirth }}</td>
@@ -43,7 +51,12 @@ export default {
   data () {
     return {
       search: '',
+      pagination: {
+        sortBy: "examDate",
+        descending: "false"
+      },
       headers: [
+        { text: 'Tanggal Pengerjaan', value: 'examDate' },
         {
           text: 'Nama Pelamar',
           align: 'left',
@@ -71,11 +84,11 @@ export default {
       this.$router.push({ name: 'report', params: { applicantId: applicantId } })
     }
   },
-  created(){
+  created () {
     this.$store.dispatch('getApplicants')
-    .catch(e => {
-      console.log(e)
-    })
+      .catch(e => {
+        console.log(e)
+      })
   }
 }
 </script>
