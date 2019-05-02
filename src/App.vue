@@ -27,6 +27,19 @@
         <v-toolbar-title class="headline text-uppercase">
           <span>Dashboard Psikotes&nbsp;</span>
           <span class="font-weight-light">Tokoonderdil</span>
+          <v-speed-dial right top absolute direction="bottom" open-on-hover>
+            <template v-slot:activator>
+              <v-btn color="red darken-2" dark>
+                {{ $t('bahasa') }}
+              </v-btn>
+            </template>
+            <v-btn dark small color="red darken-2" @click="changeLang('id')">
+              Bahasa
+            </v-btn>
+            <v-btn dark small color="red darken-2" @click="changeLang('en')">
+              English
+            </v-btn>
+          </v-speed-dial>
         </v-toolbar-title>
       </v-toolbar>
       <!-- HEADER END -->
@@ -63,6 +76,9 @@ export default {
         .then(() => {
           this.$router.push('/login')
         })
+    },
+    changeLang(lang){
+      this.$i18n.locale = lang
     }
   },
   created () {
