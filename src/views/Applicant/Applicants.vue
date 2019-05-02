@@ -1,9 +1,9 @@
 <template>
   <v-card>
     <v-card-title>
-      <h1 class="headline">Daftar Peserta</h1>
+      <h1 class="headline">{{ $t('dataPelamar') }}</h1>
       <v-spacer></v-spacer>
-      <v-text-field v-model="search" append-icon="search" label="Cari" single-line hide-details></v-text-field>
+      <v-text-field v-model="search" append-icon="search" :label="$t('cari')" single-line hide-details></v-text-field>
     </v-card-title>
     <v-data-table
       :headers="headers"
@@ -26,13 +26,13 @@
               flat
               color="red darken-2"
               @click="setDisc(props.item.applicantId)"
-            >Perbaharui DISC</v-btn>
+            >{{ $t('perbaharuiDisc') }}</v-btn>
             <v-btn
               dark
               flat
               color="red darken-2"
               @click="seeReport(props.item.applicantId)"
-            >Lihat Laporan</v-btn>
+            >{{ $t('lihatLaporan') }}</v-btn>
           </td>
         </tr>
       </template>
@@ -41,7 +41,7 @@
           :value="true"
           color="error"
           icon="warning"
-        >Tidak ada hasil yang ditemukan dengan kata kunci "{{ search }}".</v-alert>
+        >{{ $t('kataKunciTidakDitemukan') }} "{{ search }}".</v-alert>
       </template>
     </v-data-table>
   </v-card>
@@ -57,15 +57,15 @@ export default {
         descending: "false"
       },
       headers: [
-        { text: 'Tanggal Pengerjaan', value: 'examDate' },
+        { text: this.$t('tanggalPengerjaan'), value: 'examDate' },
         {
-          text: 'Nama Pelamar',
+          text: this.$t('namaPelamar'),
           align: 'left',
           value: 'fullName'
         },
-        { text: 'Tempat Lahir', value: 'placeBirth' },
-        { text: 'Tanggal Lahir', value: 'dateBirth' },
-        { text: 'Aksi', align: 'center', value: 'name', sortable: false }
+        { text: this.$t('tempatLahir'), value: 'placeBirth' },
+        { text: this.$t('tanggalLahir'), value: 'dateBirth' },
+        { text: this.$t('aksi'), align: 'center', value: 'name', sortable: false }
       ]
     }
   },

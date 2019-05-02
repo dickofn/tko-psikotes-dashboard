@@ -4,12 +4,12 @@
       <!-- HEADER START -->
       <v-navigation-drawer fixed v-model="drawer" app>
         <v-list dense>
-          <v-list-tile @click="$router.push({name : 'applicants'})">
+          <v-list-tile @click="$router.push({name : 'applicants'})" v-if="isLoggedIn">
             <v-list-tile-action>
               <v-icon>people</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Data Pelamar</v-list-tile-title>
+              <v-list-tile-title>{{ $t('dataPelamar') }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile @click="logout" v-if="isLoggedIn">

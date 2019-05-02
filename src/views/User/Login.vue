@@ -4,7 +4,7 @@
       <v-flex xs12 sm8 md4>
         <v-card class="elevation-12">
           <v-toolbar dark color="red darken-2">
-            <v-toolbar-title>Masuk Dashboard</v-toolbar-title>
+            <v-toolbar-title>{{ $t('masukDashboard') }}</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-form @submit.prevent="login">
@@ -27,7 +27,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn dark color="red darken-2" type="submit">Masuk</v-btn>
+              <v-btn dark color="red darken-2" type="submit">{{ $t('masuk') }}</v-btn>
             </v-card-actions>
           </v-form>
         </v-card>
