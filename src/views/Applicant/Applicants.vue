@@ -12,6 +12,7 @@
       :search="search"
       :pagination.sync="pagination"
       :rows-per-page-items="[10,25,{'text':'$vuetify.dataIterator.rowsPerPageAll','value':-1}]"
+      :loading="isLoading"
     >
       <template v-slot:items="props">
         <tr>
@@ -71,6 +72,9 @@ export default {
   computed: {
     applicants () {
       return this.$store.state.applicant.applicants
+    },
+    isLoading () {
+      return this.$store.state.shared.isLoading
     }
   },
   methods: {
