@@ -5,7 +5,7 @@
         <v-flex xs12>
           <v-card>
             <v-card-title primary-title>
-              <h1 class="headline">Data sedang dimuat {{ loadingDot }}</h1>
+              <h1 class="headline">{{ $t('dataSedangDimuat') }} {{ loadingDot }}</h1>
             </v-card-title>
           </v-card>
         </v-flex>
@@ -18,7 +18,7 @@
         <v-flex xs12>
           <v-card>
             <v-card-title primary-title>
-              <h1 class="headline">Data tidak ditemukan!</h1>
+              <h1 class="headline">{{ $t('dataTidakDitemukan') }}!</h1>
             </v-card-title>
           </v-card>
         </v-flex>
@@ -30,14 +30,14 @@
           <div id="page--one">
             <v-card>
               <v-card-title primary-title>
-                <h1 class="headline">Data Diri Kandidat Karyawan</h1>
+                <h1 class="headline">{{ $t('dataDiriKandidatKaryawan') }}</h1>
               </v-card-title>
               <v-card-text>
                 <v-container grid-list-xs>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-text-field
-                        label="Nama Lengkap"
+                        :label="$t('namaLengkap')"
                         name="applicantName"
                         id="applicantName"
                         :value="applicant.applicant.applicant.fullName"
@@ -48,11 +48,11 @@
 
                   <v-layout row wrap>
                     <v-flex xs12>
-                      <h4>Tempat dan Tanggal Lahir</h4>
+                      <h4>{{ $t('tempatTanggalLahir') }}</h4>
                     </v-flex>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Tempat Lahir"
+                        :label="$t('tempatLahir')"
                         name="applicantBirthPlace"
                         id="applicantBirthPlace"
                         :value="applicant.applicant.applicant.placeBirth"
@@ -61,7 +61,7 @@
                     </v-flex>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Tanggal Lahir"
+                        :label="$t('tanggalLahir')"
                         name="applicantBirthDate"
                         id="applicantBirthDate"
                         :value="applicant.applicant.applicant.dateBirth"
@@ -73,7 +73,7 @@
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-textarea
-                        label="Alamat Sekarang"
+                        :label="$t('alamatSekarang')"
                         name="applicantCurrentAddress"
                         id="applicantCurrentAddress"
                         :value="getAddressApplicant(1)"
@@ -86,7 +86,7 @@
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-textarea
-                        label="Alamat Tetap"
+                        :label="$t('alamatTetap')"
                         name="applicantPermanentAddress"
                         id="applicantPermanentAddress"
                         :value="getAddressApplicant(2)"
@@ -99,7 +99,7 @@
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-textarea
-                        label="Alamat Orang Tua"
+                        :label="$t('alamatOrangTua')"
                         name="applicantParentAddress"
                         id="applicantParentAddress"
                         :value="getAddressApplicant(3)"
@@ -112,7 +112,7 @@
                   <v-layout row wrap>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="HP"
+                        :label="$t('hp')"
                         name="applicantNumberMobile"
                         id="applicantNumberMobile"
                         :value="applicant.applicant.applicant.handphone"
@@ -121,7 +121,7 @@
                     </v-flex>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Telephone"
+                        :label="$t('telephone')"
                         name="applicantNumberHome"
                         id="applicantNumberHome"
                         :value="applicant.applicant.applicant.telephone"
@@ -134,7 +134,7 @@
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-text-field
-                        label="Alamat E-mail"
+                        :label="$t('email')"
                         name="applicantEmail"
                         id="applicantEmail"
                         :value="applicant.applicant.applicant.emailAddress"
@@ -146,7 +146,7 @@
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-text-field
-                        label="Agama"
+                        :label="$t('agama')"
                         name="applicantReligion"
                         id="applicantReligion"
                         :value="applicant.applicant.applicant.religion"
@@ -158,7 +158,7 @@
                   <v-layout row wrap>
                     <v-flex md2 xs3>
                       <v-text-field
-                        label="Berat Badan"
+                        :label="$t('beratBadan')"
                         name="applicantWeight"
                         id="applicantWeight"
                         :value="applicant.applicant.applicant.weight"
@@ -168,7 +168,7 @@
                     </v-flex>
                     <v-flex md2 xs3>
                       <v-text-field
-                        label="Tinggi Badan"
+                        :label="$t('tinggiBadan')"
                         name="applicantHeight"
                         id="applicantHeight"
                         :value="applicant.applicant.applicant.height"
@@ -178,7 +178,7 @@
                     </v-flex>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Kelainan Fisik"
+                        :label="$t('kelainanFisik')"
                         name="applicantImpairment"
                         id="applicantImpairment"
                         :value="applicant.applicant.applicant.physicalImpairment"
@@ -222,7 +222,7 @@
                   <v-layout row wrap>
                     <v-flex md2 xs4>
                       <v-text-field
-                        label="Jenis Identitas"
+                        :label="$t('jenisIdentitas')"
                         name="applicantIdentityType"
                         id="applicantIdentityType"
                         :value="applicant.applicant.applicant.idType"
@@ -231,7 +231,7 @@
                     </v-flex>
                     <v-flex md4 xs8>
                       <v-text-field
-                        label="Nomor Identitas"
+                        :label="$t('nomorIdentitas')"
                         name="applicantIdentityNumber"
                         id="applicantIdentityNumber"
                         :value="applicant.applicant.applicant.idNumber"
@@ -240,7 +240,7 @@
                     </v-flex>
                     <v-flex md2 xs12>
                       <v-text-field
-                        label="Golongan Darah"
+                        :label="$t('golonganDarah')"
                         name="applicantBloodType"
                         id="applicantBloodType"
                         :value="applicant.applicant.applicant.typeBlood"
@@ -253,7 +253,7 @@
                   <v-layout row wrap>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Kewarganegaraan"
+                        :label="$t('kewarganegaraan')"
                         name="applicantNationality"
                         id="applicantNationality"
                         :value="applicant.applicant.applicant.nationality"
@@ -262,7 +262,7 @@
                     </v-flex>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Hobby / Minat"
+                        :label="$t('hobby')"
                         name="applicantHobby"
                         id="applicantHobby"
                         :value="applicant.applicant.applicant.hobby"
@@ -275,7 +275,7 @@
                   <v-layout row wrap>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Status Pernikahan"
+                        :label="$t('statusPernikahan')"
                         name="applicantMartialStatus"
                         id="applicantMartialStatus"
                         :value="applicant.applicant.applicant.martialStatus"
@@ -286,7 +286,7 @@
                     </v-flex>
                     <v-flex md4 xs6>
                       <v-text-field
-                        label="Tanggal Menikah / Berpisah"
+                        :label="$t('tanggalMenikahBerpisah')"
                         name="applicantMartialDate"
                         id="applicantMartialDate"
                         :value="applicant.applicant.applicant.martialDate"
@@ -357,17 +357,17 @@
           <div class="pagebreak" id="page--two">
             <v-card>
               <v-card-title primary-title>
-                <h1 class="headline">Data Keluarga</h1>
+                <h1 class="headline">{{ $t('dataKeluarga') }}</h1>
               </v-card-title>
               <v-card-text>
                 <v-container grid-list-xs>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <h4>Kontak yang dapat dihubungi dalam keadaan darurat</h4>
+                      <h4>{{ $t('kontakDaruratText') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-text-field
-                        label="Nama Lengkap"
+                        :label="$t('nama')"
                         name="emergencyName"
                         id="emergencyName"
                         :value="applicant.applicantDetail.applicantEmergency.emergencyName"
@@ -376,7 +376,7 @@
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-text-field
-                        label="Jenis Relasi"
+                        :label="$t('jenisRelasi')"
                         name="emergencyRelationshipType"
                         id="emergencyRelationshipType"
                         :value="applicant.applicantDetail.applicantEmergency.relationshipType.relationshipName"
@@ -385,7 +385,7 @@
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-textarea
-                        label="Alamat"
+                        :label="$t('alamat')"
                         name="emergencyAddress"
                         id="emergencyAddress"
                         :value="getAddressDetail(4)"
@@ -402,7 +402,7 @@
                     v-if="applicant.applicantDetail.applicantFamily.applicantDependent"
                   >
                     <v-flex md8 xs12>
-                      <h4>Data Tanggungan</h4>
+                      <h4>{{ $t('dataTanggungan') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <div class="table">
@@ -410,14 +410,14 @@
                           :data="applicant.applicantDetail.applicantFamily.applicantDependent"
                         >
                           <thead slot="head">
-                            <th>Hubungan Keluarga</th>
-                            <th>Nama</th>
-                            <th>M / F</th>
-                            <th>Tempat Lahir</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Pendidikan</th>
-                            <th>Pekerjaan</th>
-                            <th>Keterangan</th>
+                            <th>{{ $t('hubunganKeluarga') }}</th>
+                            <th>{{ $t('nama') }}</th>
+                            <th>{{ $t('mAtauF') }}</th>
+                            <th>{{ $t('tempatLahir') }}</th>
+                            <th>{{ $t('tanggalLahir') }}</th>
+                            <th>{{ $t('pendidikan') }}</th>
+                            <th>{{ $t('pekerjaan') }}</th>
+                            <th>{{ $t('keterangan') }}</th>
                           </thead>
                           <tbody slot="body" slot-scope="{displayData}">
                             <tr v-for="row in displayData" :key="row.id">
@@ -438,20 +438,20 @@
 
                   <v-layout row wrap mb-3>
                     <v-flex md8 xs12>
-                      <h4>Susunan Keluarga</h4>
+                      <h4>{{ $t('susunanKeluarga') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <div class="table">
                         <v-table :data="applicant.applicantDetail.applicantFamily.applicantFamily">
                           <thead slot="head">
-                            <th>Hubungan Keluarga</th>
-                            <th>Nama</th>
-                            <th>M / F</th>
-                            <th>Tempat Lahir</th>
-                            <th>Tanggal Lahir</th>
-                            <th>Pendidikan</th>
-                            <th>Pekerjaan</th>
-                            <th>Keterangan</th>
+                            <th>{{ $t('hubunganKeluarga') }}</th>
+                            <th>{{ $t('nama') }}</th>
+                            <th>{{ $t('mAtauF') }}</th>
+                            <th>{{ $t('tempatLahir') }}</th>
+                            <th>{{ $t('tanggalLahir') }}</th>
+                            <th>{{ $t('pendidikan') }}</th>
+                            <th>{{ $t('pekerjaan') }}</th>
+                            <th>{{ $t('keterangan') }}</th>
                           </thead>
                           <tbody slot="body" slot-scope="{displayData}">
                             <tr v-for="row in displayData" :key="row.id">
@@ -472,19 +472,19 @@
 
                   <v-layout row wrap mb-3>
                     <v-flex md8 xs12>
-                      <h4>Kontak yang Dapat Dihubungi</h4>
+                      <h4>{{ $t('kontakYangDapatDihubungi') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <div class="table">
                         <v-table :data="applicant.applicantDetail.applicantContact">
                           <thead slot="head">
-                            <th>Jenis Hubungan</th>
-                            <th>Nama</th>
-                            <th>M / F</th>
-                            <th>Alamat</th>
-                            <th>No Telepon</th>
-                            <th>Pekerjaan</th>
-                            <th>Keterangan</th>
+                            <th>{{ $t('jenisHubungan') }}</th>
+                            <th>{{ $t('nama') }}</th>
+                            <th>{{ $t('mAtauF') }}</th>
+                            <th>{{ $t('alamat') }}</th>
+                            <th>{{ $t('noTelephone') }}</th>
+                            <th>{{ $t('pekerjaan') }}</th>
+                            <th>{{ $t('keterangan') }}</th>
                           </thead>
                           <tbody slot="body" slot-scope="{displayData}">
                             <tr v-for="row in displayData" :key="row.id">
@@ -505,7 +505,7 @@
               </v-card-text>
 
               <v-card-title primary-title>
-                <h1 class="headline">Riwayat Pendidikan</h1>&nbsp;
+                <h1 class="headline">{{ $t('riwayatPendidikan') }}</h1>&nbsp;
                 <v-icon
                   @click="editEducationDialog = true; education = JSON.parse(JSON.stringify(applicant.applicantDetail.applicantEducation))"
                   class="editGone"
@@ -518,12 +518,12 @@
                       <div class="table">
                         <v-table :data="applicant.applicantDetail.applicantEducation">
                           <thead slot="head">
-                            <th>Jenjang Pendidikan</th>
-                            <th>Institusi</th>
-                            <th>Periode</th>
-                            <th>Jurusan</th>
-                            <th>Peringkat</th>
-                            <th>Keterangan</th>
+                            <th>{{ $t('jenjangPendidikan') }}</th>
+                            <th>{{ $t('institusi') }}</th>
+                            <th>{{ $t('periode') }}</th>
+                            <th>{{ $t('jurusan') }}</th>
+                            <th>{{ $t('peringkat') }}</th>
+                            <th>{{ $t('keterangan') }}</th>
                           </thead>
                           <tbody slot="body" slot-scope="{displayData}">
                             <tr v-for="row in displayData" :key="row.id">
@@ -659,7 +659,7 @@
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-textarea
-                        label="Alasan Memilih Jurusan"
+                        :label="$t('alasanMemilihJurusan')"
                         name="applicantMajorDesc"
                         id="applicantMajorDesc"
                         :value="applicant.applicant.applicant.educationMajorDesc"
@@ -670,7 +670,7 @@
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-textarea
-                        label="Penjelasan Karya Ilmiah"
+                        :label="$t('penjelasanKaryaIlmiah')"
                         name="applicantMajorDesc"
                         id="applicantMajorDesc"
                         :value="applicant.applicant.applicant.educationPaperDesc"
@@ -688,7 +688,7 @@
           <div class="pagebreak" id="page--three">
             <v-card>
               <v-card-title primary-title>
-                <h1 class="headline">Data Profesionalitas</h1>
+                <h1 class="headline">{{ $t('dataProfesionalitas') }}</h1>
               </v-card-title>
               <v-card-text>
                 <v-container grid-list-xs>
@@ -699,15 +699,15 @@
                     v-if="applicant.applicantExperience.applicantOrganization.length"
                   >
                     <v-flex md8 xs12>
-                      <h4>Pengalaman Organisasi</h4>
+                      <h4>{{ $t('pengalamanOrganisasi') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <div class="table">
                         <v-table :data="applicant.applicantExperience.applicantOrganization">
                           <thead slot="head">
-                            <th>Nama Organisasi</th>
-                            <th>Jabatan</th>
-                            <th>Periode</th>
+                            <th>{{ $t('namaOrganisasi') }}</th>
+                            <th>{{ $t('jabatan') }}</th>
+                            <th>{{ $t('periode') }}</th>
                           </thead>
                           <tbody slot="body" slot-scope="{displayData}">
                             <tr v-for="row in displayData" :key="row.id">
@@ -728,16 +728,16 @@
                     v-if="applicant.applicantExperience.applicantTraining.length"
                   >
                     <v-flex md8 xs12>
-                      <h4>Pengalaman Kursus & Training</h4>
+                      <h4>{{ $t('pengalamanKursusTraining') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <div class="table">
                         <v-table :data="applicant.applicantExperience.applicantTraining">
                           <thead slot="head">
-                            <th>Nama Acara</th>
-                            <th>Tahun Diselenggarakan</th>
-                            <th>Nama Penyelenggara</th>
-                            <th>Peringkat</th>
+                            <th>{{ $t('namaAcara') }}</th>
+                            <th>{{ $t('tahunDiselenggarakan') }}</th>
+                            <th>{{ $t('namaPenyelenggara') }}</th>
+                            <th>{{ $t('peringkat') }}</th>
                           </thead>
                           <tbody slot="body" slot-scope="{displayData}">
                             <tr v-for="row in displayData" :key="row.id">
@@ -759,18 +759,18 @@
                     v-if="applicant.applicantExperience.applicantLanguage.length"
                   >
                     <v-flex md8 xs12>
-                      <h4>Bahasa Asing yang Dikuasai</h4>
+                      <h4>{{ $t('bahasaAsingYangDikuasai') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <div class="table">
                         <v-table :data="applicant.applicantExperience.applicantLanguage">
                           <thead slot="head">
-                            <th>Bahasa</th>
-                            <th>Mendengar</th>
-                            <th>Membaca</th>
-                            <th>Berbicara</th>
-                            <th>Menulis</th>
-                            <th>Score</th>
+                            <th>{{ $t('bahasa') }}</th>
+                            <th>{{ $t('mendengar') }}</th>
+                            <th>{{ $t('membaca') }}</th>
+                            <th>{{ $t('berbicara') }}</th>
+                            <th>{{ $t('menulis') }}</th>
+                            <th>{{ $t('score') }}</th>
                           </thead>
                           <tbody slot="body" slot-scope="{displayData}">
                             <tr v-for="row in displayData" :key="row.id">
@@ -789,7 +789,7 @@
 
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <h4>Pengalaman Kerja</h4>
+                      <h4>{{ $t('pengalamanKerja') }}</h4>
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-data-iterator
@@ -808,54 +808,54 @@
 
                             <v-list dense>
                               <v-list-tile>
-                                <v-list-tile-content>Periode:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('periode') }}:</v-list-tile-content>
                                 <v-list-tile-content
                                   class="align-end"
                                 >{{ props.item.startYear }} - {{ props.item.endYear }}</v-list-tile-content>
                               </v-list-tile>
 
                               <v-list-tile>
-                                <v-list-tile-content>Alamat Perusahaan:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('alamatPerusahaan') }}:</v-list-tile-content>
                                 <v-list-tile-content
                                   class="align-end"
                                 >{{ props.item.address.detailAddress }}</v-list-tile-content>
                               </v-list-tile>
 
                               <v-list-tile>
-                                <v-list-tile-content>Kontak Perusahaan:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('kontakPerusahaan') }}:</v-list-tile-content>
                                 <v-list-tile-content
                                   class="align-end"
                                 >{{ props.item.companyContact }}</v-list-tile-content>
                               </v-list-tile>
 
                               <v-list-tile>
-                                <v-list-tile-content>Jabatan Awal:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('jabatanAwal') }}:</v-list-tile-content>
                                 <v-list-tile-content
                                   class="align-end"
                                 >{{ props.item.firstTitleRole }}</v-list-tile-content>
                               </v-list-tile>
 
                               <v-list-tile>
-                                <v-list-tile-content>Jabatan Akhir:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('jabatanAkhir') }}:</v-list-tile-content>
                                 <v-list-tile-content
                                   class="align-end"
                                 >{{ props.item.lastTitleRole }}</v-list-tile-content>
                               </v-list-tile>
 
                               <v-list-tile>
-                                <v-list-tile-content>Nama Atasan Langsung:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('namaAtasanLangsung') }}:</v-list-tile-content>
                                 <v-list-tile-content
                                   class="align-end"
                                 >{{ props.item.directSupervisor }}</v-list-tile-content>
                               </v-list-tile>
 
                               <v-list-tile>
-                                <v-list-tile-content>Alasan Berhenti:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('alasanBerhenti') }}:</v-list-tile-content>
                                 <v-list-tile-content class="align-end">{{ props.item.resignReason }}</v-list-tile-content>
                               </v-list-tile>
 
                               <v-list-tile>
-                                <v-list-tile-content>Gaji Terakhir:</v-list-tile-content>
+                                <v-list-tile-content>{{ $t('gajiTerakhir') }}:</v-list-tile-content>
                                 <v-list-tile-content class="align-end">{{ props.item.lastSalary }}</v-list-tile-content>
                               </v-list-tile>
                             </v-list>
@@ -868,7 +868,7 @@
                   <v-layout row wrap>
                     <v-flex md8 xs12>
                       <v-textarea
-                        label="Deskripsi Pekerjaan Sebelumnya"
+                        :label="$t('deskripsiPekerjaanSebelumnya')"
                         name="applicantMajorDesc"
                         id="applicantMajorDesc"
                         :value="applicant.applicant.applicant.experienceJobDesc"
@@ -886,16 +886,16 @@
           <v-card>
             <div class="pagebreak" id="page--three">
               <v-card-title primary-title>
-                <h1 class="headline">Lain-lain</h1>
+                <h1 class="headline">{{ $t('lainLain') }}</h1>
               </v-card-title>
               <v-card-text>
                 <v-container>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda pernah melamar di perusahaan ini sebelumnya. Kapan & sebagai apa?
-                      <b>{{applicant.applicantQuestion[0].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.1') }}
+                        <b>{{applicant.applicantQuestion[0].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -910,10 +910,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah saat ini anda melamar di perusahaan lain? Sebagai posisi apa?
-                      <b>{{applicant.applicantQuestion[1].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.2') }}
+                        <b>{{applicant.applicantQuestion[1].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -928,10 +928,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda terikat kontrak dengan perusahaan tempat bekerja anda saat ini?
-                      <b>{{applicant.applicantQuestion[2].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.3') }}
+                        <b>{{applicant.applicantQuestion[2].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -946,10 +946,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda memiliki pekerjaan part time? Dimana dan sebagai apa?
-                      <b>{{applicant.applicantQuestion[3].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.4') }}
+                        <b>{{applicant.applicantQuestion[3].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -964,10 +964,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda keberatan bila kami meminta referensi pada perusahaan anda sebelumnya?
-                      <b>{{applicant.applicantQuestion[4].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.5') }}
+                        <b>{{applicant.applicantQuestion[4].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -982,10 +982,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda memiliki teman atau saudara yang bekerja di group / perusahaan ini? Sebutkan nama dan hubungan dengan anda
-                      <b>{{applicant.applicantQuestion[5].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.6') }}
+                        <b>{{applicant.applicantQuestion[5].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1000,10 +1000,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda memiliki teman atau saudara yang bekerja di industri rokok dan distribusi rokok atau sejenis? Sebutkan nama, nama perusahaan, jabatan dan hubungan dengan anda
-                      <b>{{applicant.applicantQuestion[6].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.7') }}
+                        <b>{{applicant.applicantQuestion[6].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1018,10 +1018,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda pernah mengalami sakit keras atau menjalani perawatan yang intensif? Bila ya, kapan dan sebutkan penyakitnya
-                      <b>{{applicant.applicantQuestion[7].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.8') }}
+                        <b>{{applicant.applicantQuestion[7].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1036,10 +1036,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda pernah mengalami kecelakaan? Bila ya kapan dan apa akibat yang anda rasakan sekarang?
-                      <b>{{applicant.applicantQuestion[8].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.9') }}
+                        <b>{{applicant.applicantQuestion[8].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1054,10 +1054,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda pernah menjalani pemeriksaan Psikologis? Bilamana, dimana dan untuk tujuan apa?
-                      <b>{{applicant.applicantQuestion[9].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.10') }}
+                        <b>{{applicant.applicantQuestion[9].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1072,10 +1072,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Apakah anda pernah berurusan dengan polisi karena tindakan tertentu?
-                      <b>{{applicant.applicantQuestion[10].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.11') }}
+                        <b>{{applicant.applicantQuestion[10].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1090,10 +1090,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Bila diterima bersediakah anda bertugas ke luar kota?
-                      <b>{{applicant.applicantQuestion[11].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.12') }}
+                        <b>{{applicant.applicantQuestion[11].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1108,10 +1108,10 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Bila diterima apakah anda bersedia ditempatkan di seluruh daerah di Indonesia?
-                      <b>{{applicant.applicantQuestion[12].answer == 0 ? "Ya" : "Tidak"}}</b></p>
+                      <p class="margin-padding-cheat">
+                        {{ $t('q.13') }}
+                        <b>{{applicant.applicantQuestion[12].answer == 0 ? $t('ya') : $t('tidak')}}</b>
+                      </p>
                     </v-flex>
                     <v-flex md8 xs12 mt-2>
                       <v-text-field
@@ -1126,9 +1126,7 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Macam pekerjaan atau jabatan apakah yang sesuai dengan cita cita anda?</p>
+                      <p class="margin-padding-cheat">{{ $t('q.14') }}</p>
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-text-field
@@ -1141,9 +1139,7 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p
-                        class="margin-padding-cheat"
-                      >Macam pekerjaan atau jabatan apakah yang tidak sesuai dengan cita cita anda?</p>
+                      <p class="margin-padding-cheat">{{ $t('q.15') }}</p>
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-text-field
@@ -1156,7 +1152,7 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p class="margin-padding-cheat">Bila diterima, kapan anda dapat mulai bekerja?</p>
+                      <p class="margin-padding-cheat">{{ $t('q.16') }}</p>
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-text-field
@@ -1169,7 +1165,7 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p class="margin-padding-cheat">Besar gaji yang anda harapkan?</p>
+                      <p class="margin-padding-cheat">{{ $t('q.17') }}</p>
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-text-field
@@ -1182,7 +1178,7 @@
                   </v-layout>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
-                      <p class="margin-padding-cheat">Tambahkan informasi tambahan (jika ada)</p>
+                      <p class="margin-padding-cheat">{{ $t('q.18') }}</p>
                     </v-flex>
                     <v-flex md8 xs12>
                       <v-text-field

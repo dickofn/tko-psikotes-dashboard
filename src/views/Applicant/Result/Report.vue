@@ -21,7 +21,7 @@
                 <v-layout row wrap>
                   <v-flex xs6>
                     <v-text-field
-                      label="Nama Lengkap"
+                      :label="$t('namaLengkap')"
                       name="applicantName"
                       :value="result.applicantData.fullName"
                       readonly
@@ -29,7 +29,7 @@
                   </v-flex>
                   <v-flex xs6>
                     <v-text-field
-                      label="Jenis Kelamin"
+                      :label="$t('jenisKelamin')"
                       name="applicantGender"
                       :value="applicantGender"
                       readonly
@@ -40,7 +40,7 @@
                 <v-layout row wrap>
                   <v-flex xs6>
                     <v-text-field
-                      label="Tanggal Lahir"
+                      :label="$t('tanggalLahir')"
                       name="applicantBirthDate"
                       :value="result.applicantData.dateBirth"
                       readonly
@@ -48,7 +48,7 @@
                   </v-flex>
                   <v-flex xs6>
                     <v-text-field
-                      label="Umur"
+                      :label="$t('umur')"
                       name="applicantAge"
                       :value="result.applicantData.age"
                       readonly
@@ -59,7 +59,7 @@
                 <v-layout row wrap>
                   <v-flex xs6>
                     <v-text-field
-                      label="Pendidikan"
+                      :label="$t('pendidikan')"
                       name="applicantEducation"
                       :value="result.applicantData.education.educationType.educationName + ' - ' + result.applicantData.education.major"
                       readonly
@@ -67,7 +67,7 @@
                   </v-flex>
                   <v-flex xs6>
                     <v-text-field
-                      label="Tujuan Pemeriksaan"
+                      :label="$t('tujuanPemeriksaan')"
                       name="applicantPurpose"
                       v-model="applicantPurpose"
                     ></v-text-field>
@@ -89,7 +89,7 @@
                       <v-text-field
                         slot="activator"
                         v-model="applicantCheckDate"
-                        label="Tanggal Periksa (YYYY-MM-DD)"
+                        :label="$t('tanggalPeriksa')"
                         readonly
                       ></v-text-field>
                       <v-date-picker
@@ -101,7 +101,7 @@
                   </v-flex>
                   <v-flex xs6>
                     <v-text-field
-                      label="Jabatan yang Dilamar"
+                      :label="$t('jabatanYangDilamar')"
                       name="applicantJob"
                       v-model="applicantJob"
                     ></v-text-field>
@@ -111,14 +111,14 @@
                 <v-layout row wrap>
                   <v-flex xs6>
                     <v-text-field
-                      label="Hasil diberikan ke"
+                      :label="$t('hasilDiberikanKe')"
                       name="applicantReceiver"
                       v-model="applicantReceiver"
                     ></v-text-field>
                   </v-flex>
                   <v-flex xs6>
                     <v-text-field
-                      label="IPK"
+                      :label="$t('ipk')"
                       name="applicantGrade"
                       :value="result.applicantData.education.gpa"
                       readonly
@@ -158,21 +158,21 @@
                 <table class="tableIntro">
                   <thead>
                     <tr>
-                      <th>Kurang</th>
-                      <th>Sedang</th>
-                      <th>Baik</th>
+                      <th>{{ $t('kurang') }}</th>
+                      <th>{{ $t('sedang') }}</th>
+                      <th>{{ $t('baik') }}</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>1 = Sangat Kurang</td>
-                      <td>3 = Sedang</td>
-                      <td>5 = Baik</td>
+                      <td>1 = {{ $t('sangatKurang') }}</td>
+                      <td>3 = {{ $t('sedang') }}</td>
+                      <td>5 = {{ $t('baik') }}</td>
                     </tr>
                     <tr>
-                      <td>2 = Kurang</td>
-                      <td>4 = Cukup Baik</td>
-                      <td>6 = Sangat Baik</td>
+                      <td>2 = {{ $t('kurang') }}</td>
+                      <td>4 = {{ $t('cukupBaik') }}</td>
+                      <td>6 = {{ $t('sangatBaik') }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -182,10 +182,10 @@
                 <table class="tableMain">
                   <thead>
                     <tr>
-                      <th rowspan="2">Aspek Penilaian Psikologis</th>
-                      <th colspan="2">Kurang</th>
-                      <th colspan="2">Sedang</th>
-                      <th colspan="2">Baik</th>
+                      <th rowspan="2">{{ $t('aspekPenilaianPsikologis') }}</th>
+                      <th colspan="2">{{ $t('kurang') }}</th>
+                      <th colspan="2">{{ $t('sedang') }}</th>
+                      <th colspan="2">{{ $t('baik') }}</th>
                     </tr>
                     <tr>
                       <th class="fixed-width">1</th>
@@ -198,12 +198,12 @@
                   </thead>
                   <thead class="sub-thead">
                     <tr>
-                      <th colspan="7">A. Aspek Kecerdasan</th>
+                      <th colspan="7">A. {{ $t('aspekKecerdasan') }}</th>
                     </tr>
                   </thead>
                   <tbody class="score-tbody">
                     <tr>
-                      <td>1. Daya Tangkap</td>
+                      <td>1. {{ $t('dayaTangkap') }}</td>
                       <td :class="{ active : a1 == 1}"></td>
                       <td :class="{ active : a1 == 2}"></td>
                       <td :class="{ active : a1 == 3}"></td>
@@ -212,7 +212,7 @@
                       <td :class="{ active : a1 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>2. Daya Nalar</td>
+                      <td>2. {{ $t('dayaNalar') }}</td>
                       <td :class="{ active : a2 == 1}"></td>
                       <td :class="{ active : a2 == 2}"></td>
                       <td :class="{ active : a2 == 3}"></td>
@@ -221,7 +221,7 @@
                       <td :class="{ active : a2 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>3. Kemampuan Verbal</td>
+                      <td>3. {{ $t('kemampuanVerbal') }}</td>
                       <td :class="{ active : a3 == 1}"></td>
                       <td :class="{ active : a3 == 2}"></td>
                       <td :class="{ active : a3 == 3}"></td>
@@ -230,7 +230,7 @@
                       <td :class="{ active : a3 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>4. Kemampuan Numerik</td>
+                      <td>4. {{ $t('kemampuanNumerik') }}</td>
                       <td :class="{ active : a4 == 1}"></td>
                       <td :class="{ active : a4 == 2}"></td>
                       <td :class="{ active : a4 == 3}"></td>
@@ -239,7 +239,7 @@
                       <td :class="{ active : a4 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>5. Kemampuan Analisa</td>
+                      <td>5. {{ $t('kemampuanAnalisa') }}</td>
                       <td :class="{ active : a5 == 1}"></td>
                       <td :class="{ active : a5 == 2}"></td>
                       <td :class="{ active : a5 == 3}"></td>
@@ -250,12 +250,12 @@
                   </tbody>
                   <thead class="sub-thead">
                     <tr>
-                      <th colspan="7">B. Aspek Sosial dan Emosi</th>
+                      <th colspan="7">B. {{ $t('aspekSosialEmosi') }}</th>
                     </tr>
                   </thead>
                   <tbody class="score-tbody">
                     <tr>
-                      <td>1. Kematangan Emosi</td>
+                      <td>1. {{ $t('kematanganEmosi') }}</td>
                       <td :class="{ active : b1 == 1}"></td>
                       <td :class="{ active : b1 == 2}"></td>
                       <td :class="{ active : b1 == 3}"></td>
@@ -264,7 +264,7 @@
                       <td :class="{ active : b1 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>2. Penyesuaian Diri</td>
+                      <td>2. {{ $t('penyesuaian') }}</td>
                       <td :class="{ active : b2 == 1}"></td>
                       <td :class="{ active : b2 == 2}"></td>
                       <td :class="{ active : b2 == 3}"></td>
@@ -273,7 +273,7 @@
                       <td :class="{ active : b2 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>3. Motivasi</td>
+                      <td>3. {{ $t('motivasi') }}</td>
                       <td :class="{ active : b3 == 1}"></td>
                       <td :class="{ active : b3 == 2}"></td>
                       <td :class="{ active : b3 == 3}"></td>
@@ -284,12 +284,12 @@
                   </tbody>
                   <thead class="sub-thead">
                     <tr>
-                      <th colspan="7">C. Aspek Sikap Dalam Bekerja</th>
+                      <th colspan="7">C. {{ $t('aspekSikapDalamBekerja') }}</th>
                     </tr>
                   </thead>
                   <tbody class="score-tbody">
                     <tr>
-                      <td>1. Perencanaan Kerja</td>
+                      <td>1. {{ $t('perencanaanKerja') }}</td>
                       <td :class="{ active : c1 == 1}"></td>
                       <td :class="{ active : c1 == 2}"></td>
                       <td :class="{ active : c1 == 3}"></td>
@@ -298,7 +298,7 @@
                       <td :class="{ active : c1 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>2. Sistematik Kerja</td>
+                      <td>2. {{ $t('sistematikKerja') }}</td>
                       <td :class="{ active : c2 == 1}"></td>
                       <td :class="{ active : c2 == 2}"></td>
                       <td :class="{ active : c2 == 3}"></td>
@@ -307,7 +307,7 @@
                       <td :class="{ active : c2 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>3. Ketelitian</td>
+                      <td>3. {{ $t('ketelitian') }}</td>
                       <td :class="{ active : c3 == 1}"></td>
                       <td :class="{ active : c3 == 2}"></td>
                       <td :class="{ active : c3 == 3}"></td>
@@ -316,7 +316,7 @@
                       <td :class="{ active : c3 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>4. Inisiatif</td>
+                      <td>4. {{ $t('inisiatif') }}</td>
                       <td :class="{ active : c4 == 1}"></td>
                       <td :class="{ active : c4 == 2}"></td>
                       <td :class="{ active : c4 == 3}"></td>
@@ -325,7 +325,7 @@
                       <td :class="{ active : c4 == 6}"></td>
                     </tr>
                     <tr>
-                      <td>5. Ketekunan</td>
+                      <td>5. {{ $t('ketekunan') }}</td>
                       <td :class="{ active : c5 == 1}"></td>
                       <td :class="{ active : c5 == 2}"></td>
                       <td :class="{ active : c5 == 3}"></td>
@@ -340,13 +340,23 @@
               <v-container grid-list-xs>
                 <v-layout row wrap>
                   <v-flex xs12 text-xs-center class="tableDisc" pa-2>
-                    <h4>Rangkuman DISC kandidat (personality)</h4>
+                    <h4>{{ $t('rangkumanDiscKandidat') }}</h4>
                   </v-flex>
                   <v-flex xs6 class="tableDisc" style="border-bottom-left-radius: 20px;" px-2>
-                    <v-text-field label="Profil DISC" name="discName" :value="disc.name" readonly></v-text-field>
+                    <v-text-field
+                      :label="$t('profilDisc')"
+                      name="discName"
+                      :value="disc.name"
+                      readonly
+                    ></v-text-field>
                   </v-flex>
                   <v-flex xs6 class="tableDisc" px-2>
-                    <v-text-field label="Tipe DISC" name="discCode" :value="disc.code" readonly></v-text-field>
+                    <v-text-field
+                      :label="$t('tipeDisc')"
+                      name="discCode"
+                      :value="disc.code"
+                      readonly
+                    ></v-text-field>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -362,7 +372,7 @@
               <v-container grid-list-xs>
                 <v-layout row wrap>
                   <v-flex xs12>
-                    <h4>Rekomendasi HRD:</h4>
+                    <h4>{{ $t('rekomendasiHrd') }}:</h4>
                     <v-divider></v-divider>
                   </v-flex>
                   <v-flex xs12>
@@ -375,7 +385,7 @@
                           value="1"
                           v-model="recommendedOption"
                         >
-                        <label for="1">Dapat direkomendasikan untuk interview</label>
+                        <label for="1">{{ $t('rekomendasiYa') }}</label>
                       </div>
                       <div>
                         <input
@@ -385,7 +395,7 @@
                           value="2"
                           v-model="recommendedOption"
                         >
-                        <label for="2">Dipertimbangkan untuk interview</label>
+                        <label for="2">{{ $t('rekomendasiMungkin') }}</label>
                       </div>
                       <div>
                         <input
@@ -395,7 +405,7 @@
                           value="3"
                           v-model="recommendedOption"
                         >
-                        <label for="3">Tidak direkomendasikan</label>
+                        <label for="3">{{ $t('rekomendasiTidak') }}</label>
                       </div>
                       <br>
                     </div>
@@ -404,7 +414,7 @@
 
                 <v-layout row wrap>
                   <v-flex xs12>
-                    <h4>Rangkuman Singkat HRD dan Memo untuk Kandidat:</h4>
+                    <h4>{{ $t('rangkumanSingkatHrd') }}:</h4>
                     <v-divider></v-divider>
                   </v-flex>
                   <v-flex xs12>
@@ -418,24 +428,22 @@
                       <table class="tableForm">
                         <tbody>
                           <tr>
-                            <td class="question">Posisi yang disetujui</td>
+                            <td class="question">{{ $t('posisiYangDisetujui') }}</td>
                             <td class="separator">:</td>
                             <td class="answer"></td>
                           </tr>
                           <tr>
-                            <td class="question">Diinterview Oleh</td>
+                            <td class="question">{{ $t('diinterviewOleh') }}</td>
                             <td class="separator">:</td>
                             <td class="answer"></td>
                           </tr>
                           <tr>
-                            <td class="question">Dengan hasil</td>
+                            <td class="question">{{ $t('denganHasil') }}</td>
                             <td class="separator">:</td>
                             <td class="answer"></td>
                           </tr>
                           <tr>
-                            <td
-                              class="question"
-                            >Hasil ekplorasi karir pribadi dengan arah minat bidang</td>
+                            <td class="question">{{ $t('hasilEksplorasiKarir') }}</td>
                             <td class="separator">:</td>
                             <td class="answer"></td>
                           </tr>
@@ -511,14 +519,14 @@
     </div>
 
     <v-layout row wrap mt-3>
-      <div class="printDisc" id="printDisc">
-        <v-flex xs12>
+      <v-flex xs12>
+        <div class="printDisc" id="printDisc">
           <v-card v-if="!disc.name">
             <v-card-text>
               <v-container grid-list-xs>
                 <v-layout row wrap>
                   <v-flex xs12>
-                    <h1 class="headline">Tidak ada data DISC</h1>
+                    <h1 class="headline">{{ $t('tidakAdaDataDisc') }}</h1>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -530,17 +538,27 @@
                 <v-layout row wrap>
                   <v-flex xs12>
                     <v-text-field
-                      label="Nama Lengkap"
+                      :label="$t('namaLengkap')"
                       name="applicantName"
                       :value="result.applicantData.fullName"
                       readonly
                     ></v-text-field>
                   </v-flex>
                   <v-flex xs6>
-                    <v-text-field label="Profil DISC" name="discName" :value="disc.name" readonly></v-text-field>
+                    <v-text-field
+                      :label="$t('profilDisc')"
+                      name="discName"
+                      :value="disc.name"
+                      readonly
+                    ></v-text-field>
                   </v-flex>
                   <v-flex xs6>
-                    <v-text-field label="Tipe DISC" name="discCode" :value="disc.code" readonly></v-text-field>
+                    <v-text-field
+                      :label="$t('tipeDisc')"
+                      name="discCode"
+                      :value="disc.code"
+                      readonly
+                    ></v-text-field>
                   </v-flex>
                 </v-layout>
                 <v-layout row wrap>
@@ -562,8 +580,8 @@
               </v-container>
             </v-card-text>
           </v-card>
-        </v-flex>
-      </div>
+        </div>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
