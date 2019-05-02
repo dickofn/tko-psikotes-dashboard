@@ -370,7 +370,7 @@
                         :label="$t('nama')"
                         name="emergencyName"
                         id="emergencyName"
-                        :value="applicant.applicantDetail.applicantEmergency.emergencyName"
+                        :value="applicant.applicantDetail.applicantEmergency ? applicant.applicantDetail.applicantEmergency.emergencyName : ''"
                         readonly
                       ></v-text-field>
                     </v-flex>
@@ -379,7 +379,7 @@
                         :label="$t('jenisRelasi')"
                         name="emergencyRelationshipType"
                         id="emergencyRelationshipType"
-                        :value="applicant.applicantDetail.applicantEmergency.relationshipType.relationshipName"
+                        :value="applicant.applicantDetail.applicantEmergency ? applicant.applicantDetail.applicantEmergency.relationshipType.relationshipName : ''"
                         readonly
                       ></v-text-field>
                     </v-flex>
