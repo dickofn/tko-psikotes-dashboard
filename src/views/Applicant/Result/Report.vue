@@ -841,7 +841,7 @@ export default {
         }
         const data = {
           discProfileCode: this.disc.code,
-          language: "ID"
+          language: this.$i18n.locale
         }
         this.$store.dispatch('setLoading', true)
         this.axios.post(process.env.VUE_APP_API_URL + "/exam/result/get/disc", data, auth)
