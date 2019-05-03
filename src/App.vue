@@ -29,7 +29,7 @@
           <span class="font-weight-light">Tokoonderdil</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-speed-dial direction="bottom" open-on-hover>
+        <v-speed-dial direction="bottom">
           <template v-slot:activator>
             <v-btn color="red darken-2" dark>{{ $t('bahasa') }}</v-btn>
           </template>
