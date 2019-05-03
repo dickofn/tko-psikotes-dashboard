@@ -884,7 +884,7 @@
           </div>
 
           <v-card>
-            <div class="pagebreak" id="page--three" v-if="!applicant.applicantQuestion[0]">
+            <div class="pagebreak" id="page--three" v-if="applicant.applicantQuestion.length <= 0">
               <v-card-title primary-title>
                 <h1 class="headline">{{ $t('dataKuisonerTidakDitemukan') }}</h1>
               </v-card-title>
