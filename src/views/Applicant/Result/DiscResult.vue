@@ -169,8 +169,10 @@ export default {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") }
       };
 
+      this.$store.dispatch('setLoading', true)
       this.axios.post(process.env.VUE_APP_API_URL + "/exam/result/set/disc", data, auth)
         .then(res => {
+          this.$store.dispatch('setLoading', false)
           if (res.status == 200) {
             this.dialogSuccess = true
           }
@@ -188,8 +190,10 @@ export default {
       headers: { Authorization: "Bearer " + localStorage.getItem("token") }
     };
 
+    this.$store.dispatch('setLoading', true)
     this.axios.get(process.env.VUE_APP_API_URL + "/exam/score/disc/" + this.$route.params.applicantId, auth)
       .then(res => {
+        this.$store.dispatch('setLoading', false)
         const ans = res.data.data
         this.selectedMost.d = ans.scoreM_D
         this.selectedMost.i = ans.scoreM_I
@@ -210,8 +214,10 @@ export default {
             headers: { Authorization: "Bearer " + localStorage.getItem("token") }
           };
 
+          this.$store.dispatch('setLoading', true)
           this.axios.get(process.env.VUE_APP_API_URL + "/exam/result/get/" + this.$route.params.applicantId, auth)
             .then(res => {
+              this.$store.dispatch('setLoading', false)
               const examResult = res.data.data.examResult
               examResult.forEach(el => {
                 if (el.examType.examTypeId == 1) this.discCode = el.score

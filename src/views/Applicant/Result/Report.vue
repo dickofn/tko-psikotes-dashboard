@@ -791,8 +791,10 @@ export default {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") }
       };
 
+      this.$store.dispatch('setLoading', true)
       this.axios.post(process.env.VUE_APP_API_URL + "/applicant/report/new", data, auth)
         .then(res => {
+          this.$store.dispatch('setLoading', false)
           if (res.status == 200) {
             d.print(el, styles, scripts);
           }
@@ -841,8 +843,10 @@ export default {
           discProfileCode: this.disc.code,
           language: "ID"
         }
+        this.$store.dispatch('setLoading', true)
         this.axios.post(process.env.VUE_APP_API_URL + "/exam/result/get/disc", data, auth)
           .then(res => {
+            this.$store.dispatch('setLoading', false)
             this.discDesc = res.data.data
           })
           .catch(e => {

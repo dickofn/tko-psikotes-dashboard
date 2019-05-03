@@ -1324,9 +1324,10 @@ export default {
       const auth = {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") }
       };
-
+      this.$store.dispatch('setLoading', true)
       this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data, auth)
         .then(res => {
+          this.$store.dispatch('setLoading', false)
           if (res.status == 200) {
             this.$store.state.applicant.applicant.applicant.applicant.physicalImpairment = this.physicalImpairment
             this.editPhysicalImpairmentDialog = false;
@@ -1347,8 +1348,10 @@ export default {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") }
       };
 
+      this.$store.dispatch('setLoading', true)
       this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/self/" + this.$route.params.applicantId, data, auth)
         .then(res => {
+          this.$store.dispatch('setLoading', false)
           if (res.status == 200) {
             this.$store.state.applicant.applicant.applicant.applicant.martialStatus = this.martialStatus
             this.$store.state.applicant.applicant.applicant.applicant.martialDate = this.martialDate
@@ -1414,8 +1417,10 @@ export default {
         headers: { Authorization: "Bearer " + localStorage.getItem("token") }
       };
 
+      this.$store.dispatch('setLoading', true)
       this.axios.post(process.env.VUE_APP_API_URL + "/applicant/update/detail/" + this.$route.params.applicantId, data, auth)
         .then(res => {
+          this.$store.dispatch('setLoading', false)
           if (res.status == 200) {
             this.$store.state.applicant.applicant.applicantDetail.applicantEducation = JSON.parse(JSON.stringify(this.education))
             this.editEducationDialog = false;
