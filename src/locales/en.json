@@ -146,5 +146,6 @@
   "aksi": "Action",
   "perbaharuiDisc": "Update DISC",
   "lihatLaporan": "See Report",
-  "kataKunciTidakDitemukan": "No result found with this keyword"
+  "kataKunciTidakDitemukan": "No result found with this keyword",
+  "dataKuisonerTidakDitemukan": "There is no questionnaire data"
 }
