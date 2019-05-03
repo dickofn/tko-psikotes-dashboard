@@ -22,7 +22,7 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar color="red darken-2" dark fixed app :extension-height="extensionHeight">
+      <v-toolbar color="red darken-2" dark fixed app extension-height="7">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title class="headline text-uppercase">
           Dashboard Psikotes&nbsp;
@@ -72,7 +72,6 @@ export default {
   computed: {
     isLoggedIn () { return this.$store.getters.isLoggedIn },
     isLoading () { return this.$store.state.shared.isLoading },
-    extensionHeight () { return this.isLoading ? '7' : '0' }
   },
   methods: {
     logout () {
