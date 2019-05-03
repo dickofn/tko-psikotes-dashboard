@@ -81,10 +81,13 @@ export default {
         })
     },
     changeLang (lang) {
+      localStorage.setItem("lang", lang)
       this.$i18n.locale = lang
+      this.$router.go()
     }
   },
   created () {
+    this.$i18n.locale = localStorage.getItem('lang')
     if (this.$store.getters.isLoggedIn) {
       this.axios
         .post(process.env.VUE_APP_API_URL + "/user/validation", {
