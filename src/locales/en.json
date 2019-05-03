@@ -147,5 +147,6 @@
   "perbaharuiDisc": "Update DISC",
   "lihatLaporan": "See Report",
   "kataKunciTidakDitemukan": "No result found with this keyword",
-  "dataKuisonerTidakDitemukan": "There is no questionnaire data"
+  "dataKuisonerTidakDitemukan": "There is no questionnaire data",
+  "idPasswordSalah": "Wrong ID / Password"
 }
