@@ -24,6 +24,7 @@
                 type="password"
                 v-model="password"
               ></v-text-field>
+              <p v-if="wrong" style="color: red; text-align: right">* {{ $t('idPasswordSalah') }}</p>
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -41,7 +42,8 @@ export default {
   data () {
     return {
       username: "",
-      password: ""
+      password: "",
+      wrong: false
     }
   },
   methods: {
@@ -49,7 +51,9 @@ export default {
       let data = { username: this.username, password: this.password }
       this.$store.dispatch('login', data)
         .then(() => this.$router.go())
-        .catch(e => console.log(e))
+        .catch(e => {
+          if (e.response.status == 422) this.wrong = true
+        })
     }
   }
 }
