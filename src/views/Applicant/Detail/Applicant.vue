@@ -884,7 +884,12 @@
           </div>
 
           <v-card>
-            <div class="pagebreak" id="page--three">
+            <div class="pagebreak" id="page--three" v-if="!applicant.applicantQuestion[0]">
+              <v-card-title primary-title>
+                <h1 class="headline">{{ $t('dataKuisonerTidakDitemukan') }}</h1>
+              </v-card-title>
+            </div>
+            <div class="pagebreak" id="page--three" v-else>
               <v-card-title primary-title>
                 <h1 class="headline">{{ $t('lainLain') }}</h1>
               </v-card-title>
@@ -1443,6 +1448,9 @@ export default {
   },
   created () {
     this.$store.dispatch('getApplicant', this.$route.params.applicantId)
+      .catch(e => {
+        console.log(e)
+      })
     let interval = setInterval(() => {
       this.dot == "..." ? this.dot = "" : this.dot += "."
     }, 100);
