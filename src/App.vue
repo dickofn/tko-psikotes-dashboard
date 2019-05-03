@@ -22,25 +22,27 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar color="red darken-2" dark fixed app>
+      <v-toolbar color="red darken-2" dark fixed app :extension-height="extensionHeight">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
         <v-toolbar-title class="headline text-uppercase">
-          <span>Dashboard Psikotes&nbsp;</span>
+          Dashboard Psikotes&nbsp;
           <span class="font-weight-light">Tokoonderdil</span>
-          <v-speed-dial right top absolute direction="bottom" open-on-hover>
-            <template v-slot:activator>
-              <v-btn color="red darken-2" dark>
-                {{ $t('bahasa') }}
-              </v-btn>
-            </template>
-            <v-btn dark small color="red darken-2" @click="changeLang('id')">
-              Bahasa
-            </v-btn>
-            <v-btn dark small color="red darken-2" @click="changeLang('en')">
-              English
-            </v-btn>
-          </v-speed-dial>
         </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-speed-dial direction="bottom" open-on-hover>
+          <template v-slot:activator>
+            <v-btn color="red darken-2" dark>{{ $t('bahasa') }}</v-btn>
+          </template>
+          <v-btn dark small color="red darken-2" @click="changeLang('id')">Bahasa</v-btn>
+          <v-btn dark small color="red darken-2" @click="changeLang('en')">English</v-btn>
+        </v-speed-dial>
+        <v-progress-linear
+          background-color="red darken-2"
+          color="white"
+          slot="extension"
+          :indeterminate="isLoading"
+          class="ma-0"
+        ></v-progress-linear>
       </v-toolbar>
       <!-- HEADER END -->
 
@@ -68,7 +70,9 @@ export default {
     }
   },
   computed: {
-    isLoggedIn () { return this.$store.getters.isLoggedIn }
+    isLoggedIn () { return this.$store.getters.isLoggedIn },
+    isLoading () { return this.$store.state.shared.isLoading },
+    extensionHeight () { return this.isLoading ? '7' : '0' }
   },
   methods: {
     logout () {
@@ -77,7 +81,7 @@ export default {
           this.$router.push('/login')
         })
     },
-    changeLang(lang){
+    changeLang (lang) {
       this.$i18n.locale = lang
     }
   },
@@ -102,8 +106,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .footer--custom {
   padding: 0 16px;
+}
+
+.v-toolbar__extension {
+  padding: 0px !important;
 }
 </style>

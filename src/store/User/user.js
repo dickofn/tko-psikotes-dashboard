@@ -41,6 +41,7 @@ export default {
         localStorage.removeItem("token");
         delete Axios.defaults.headers.common["Authorization"];
         commit("CLEAR_USER");
+        commit("UPDATE_LOADING", false);
         resolve();
       });
     }
