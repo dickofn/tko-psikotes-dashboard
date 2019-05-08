@@ -87,7 +87,7 @@ export default {
     }
   },
   created () {
-    this.$i18n.locale = localStorage.getItem('lang')
+    this.$i18n.locale =  localStorage.getItem('lang') || "id"
     if (this.$store.getters.isLoggedIn) {
       this.axios
         .post(process.env.VUE_APP_API_URL + "/user/validation", {
