@@ -25,6 +25,12 @@
               dark
               flat
               color="red darken-2"
+              @click="seeAnswer(props.item.applicantId, props.item.examInfoId)"
+            >{{ $t('jawabanPsikotes') }}</v-btn>
+            <v-btn
+              dark
+              flat
+              color="red darken-2"
               @click="setDisc(props.item.applicantId)"
             >{{ $t('perbaharuiDisc') }}</v-btn>
             <v-btn
@@ -80,6 +86,9 @@ export default {
   methods: {
     applicantClicked (item) {
       this.$router.push({ name: 'applicant', params: { applicantId: item.applicantId } })
+    },
+    seeAnswer(applicantId, examInfoId) {
+      this.$router.push({ name: 'psikotestAnswer', params: { applicantId, examInfoId } })
     },
     setDisc (applicantId) {
       this.$router.push({ name: 'discResult', params: { applicantId: applicantId } })
