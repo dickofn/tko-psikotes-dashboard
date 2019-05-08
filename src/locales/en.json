@@ -148,5 +148,7 @@
   "lihatLaporan": "See Report",
   "kataKunciTidakDitemukan": "No result found with this keyword",
   "dataKuisonerTidakDitemukan": "There is no questionnaire data",
-  "idPasswordSalah": "Wrong ID / Password"
+  "idPasswordSalah": "Wrong ID / Password",
+  "jawabanPsikotes": "Psikotest Answer",
+  "bahasaInggris": "English"
 }

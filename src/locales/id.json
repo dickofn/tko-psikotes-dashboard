@@ -149,5 +149,7 @@
   "lihatLaporan": "Lihat Laporan",
   "kataKunciTidakDitemukan": "Tidak ada hasil yang ditemukan dengan kata kunci",
   "dataKuisonerTidakDitemukan": "Tidak ada data kuisioner",
-  "idPasswordSalah": "ID / Password Salah"
+  "idPasswordSalah": "ID / Password Salah",
+  "jawabanPsikotes": "Jawaban Psikotes",
+  "bahasaInggris": "Bahasa Inggris"
 }
