@@ -884,16 +884,14 @@
           </div>
 
           <v-card>
-            <div class="pagebreak" id="page--three" v-if="applicant.applicantQuestion.length <= 0">
-              <v-card-title primary-title>
+            <div class="pagebreak" id="page--three">
+              <v-card-title primary-title v-if="applicant.applicantQuestion.length <= 0">
                 <h1 class="headline">{{ $t('dataKuisonerTidakDitemukan') }}</h1>
               </v-card-title>
-            </div>
-            <div class="pagebreak" id="page--three" v-else>
-              <v-card-title primary-title>
+              <v-card-title primary-title v-if="applicant.applicantQuestion.length > 0">
                 <h1 class="headline">{{ $t('lainLain') }}</h1>
               </v-card-title>
-              <v-card-text>
+              <v-card-text  v-if="applicant.applicantQuestion.length > 0">
                 <v-container>
                   <v-layout row wrap>
                     <v-flex md8 xs12>
