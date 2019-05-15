@@ -8,7 +8,7 @@ import Login from "./views/User/Login.vue";
 import Applicants from "./views/Applicant/Applicants.vue";
 import Applicant from "./views/Applicant/Detail/Applicant.vue";
 
-import PsikotestAnswer from "./views/Applicant/Result/PsikotestAnswer.vue";
+import PsychotestAnswer from "./views/Applicant/Result/PsychotestAnswer.vue";
 import DiscResult from "./views/Applicant/Result/DiscResult.vue";
 import Report from "./views/Applicant/Result/Report.vue";
 
@@ -39,8 +39,8 @@ const router = new Router({
     },
     {
       path: "/applicant/:applicantId/result/psikotes/:examInfoId",
-      name: "psikotestAnswer",
-      component: PsikotestAnswer,
+      name: "psychotestAnswer",
+      component: PsychotestAnswer,
       meta: { requiresAuth: true }
     },
     {

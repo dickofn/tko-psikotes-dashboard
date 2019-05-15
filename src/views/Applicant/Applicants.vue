@@ -88,7 +88,7 @@ export default {
       this.$router.push({ name: 'applicant', params: { applicantId: item.applicantId } })
     },
     seeAnswer(applicantId, examInfoId) {
-      this.$router.push({ name: 'psikotestAnswer', params: { applicantId, examInfoId } })
+      this.$router.push({ name: 'psychotestAnswer', params: { applicantId, examInfoId } })
     },
     setDisc (applicantId) {
       this.$router.push({ name: 'discResult', params: { applicantId: applicantId } })
