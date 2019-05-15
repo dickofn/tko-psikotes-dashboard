@@ -1,81 +1,87 @@
 <template>
-  <v-card>
-    <v-card-title v-if="!isLoading && !valid">
-      <h1 class="headline">{{ $t('dataTidakDitemukan') }}</h1>
-    </v-card-title>
-    <v-card-title v-if="!isLoading && valid">
-      <h1 class="headline">{{ $t('jawabanPsikotes') }}</h1>
-    </v-card-title>
-    <v-card-text v-if="!isLoading && valid">
-      <v-container grid-list-xs>
-        <v-layout row wrap>
-          <v-flex xs12 md6 lg3 text-xs-center>
-            <v-btn
-              :href="psikotestUrl + '/exam/disc/' + $route.params.examInfoId"
-              target="_blank"
-              color="red darken-2"
-              block
-              dark
-            >DISC</v-btn>
-          </v-flex>
-          <v-flex xs12 md6 lg3 text-xs-center>
-            <v-btn
-              :href="psikotestUrl + '/exam/apm/' + $route.params.examInfoId"
-              target="_blank"
-              color="red darken-2"
-              block
-              dark
-            >APM</v-btn>
-          </v-flex>
-          <v-flex xs12 md6 lg3 text-xs-center>
-            <v-btn
-              :href="psikotestUrl + '/exam/english/' + $route.params.examInfoId"
-              target="_blank"
-              color="red darken-2"
-              block
-              dark
-            >{{ $t('bahasaInggris') }}</v-btn>
-          </v-flex>
-          <v-flex xs12 md6 lg3 text-xs-center>
-            <v-btn
-              :href="psikotestUrl + '/exam/story/' + $route.params.examInfoId"
-              target="_blank"
-              color="red darken-2"
-              block
-              dark
-            >TKD-1</v-btn>
-          </v-flex>
-          <v-flex xs12 md6 lg3 text-xs-center>
-            <v-btn
-              :href="psikotestUrl + '/exam/math/' + $route.params.examInfoId"
-              target="_blank"
-              color="red darken-2"
-              block
-              dark
-            >TKD-5</v-btn>
-          </v-flex>
-          <v-flex xs12 md6 lg3 text-xs-center>
-            <v-btn
-              :href="psikotestUrl + '/exam/seq/' + $route.params.examInfoId"
-              target="_blank"
-              color="red darken-2"
-              block
-              dark
-            >TKD-6</v-btn>
-          </v-flex>
-          <v-flex xs12 md6 lg3 text-xs-center>
-            <v-btn
-              :href="psikotestUrl + '/exam/pap/' + $route.params.examInfoId"
-              target="_blank"
-              color="red darken-2"
-              block
-              dark
-            >Papikostik</v-btn>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card-text>
-  </v-card>
+  <v-container grid-list-xs>
+    <v-layout row wrap>
+      <v-flex xs12>
+        <v-card>
+          <v-card-title v-if="!isLoading && !valid">
+            <h1 class="headline">{{ $t('dataTidakDitemukan') }}</h1>
+          </v-card-title>
+          <v-card-title v-if="!isLoading && valid">
+            <h1 class="headline">{{ $t('jawabanPsikotes') }}</h1>
+          </v-card-title>
+          <v-card-text v-if="!isLoading && valid">
+            <v-container grid-list-xs>
+              <v-layout row wrap>
+                <v-flex xs12 md6 lg3 text-xs-center>
+                  <v-btn
+                    :href="psikotestUrl + '/exam/disc/' + $route.params.examInfoId"
+                    target="_blank"
+                    color="red darken-2"
+                    block
+                    dark
+                  >DISC</v-btn>
+                </v-flex>
+                <v-flex xs12 md6 lg3 text-xs-center>
+                  <v-btn
+                    :href="psikotestUrl + '/exam/apm/' + $route.params.examInfoId"
+                    target="_blank"
+                    color="red darken-2"
+                    block
+                    dark
+                  >APM</v-btn>
+                </v-flex>
+                <v-flex xs12 md6 lg3 text-xs-center>
+                  <v-btn
+                    :href="psikotestUrl + '/exam/english/' + $route.params.examInfoId"
+                    target="_blank"
+                    color="red darken-2"
+                    block
+                    dark
+                  >{{ $t('bahasaInggris') }}</v-btn>
+                </v-flex>
+                <v-flex xs12 md6 lg3 text-xs-center>
+                  <v-btn
+                    :href="psikotestUrl + '/exam/story/' + $route.params.examInfoId"
+                    target="_blank"
+                    color="red darken-2"
+                    block
+                    dark
+                  >TKD-1</v-btn>
+                </v-flex>
+                <v-flex xs12 md6 lg3 text-xs-center>
+                  <v-btn
+                    :href="psikotestUrl + '/exam/math/' + $route.params.examInfoId"
+                    target="_blank"
+                    color="red darken-2"
+                    block
+                    dark
+                  >TKD-5</v-btn>
+                </v-flex>
+                <v-flex xs12 md6 lg3 text-xs-center>
+                  <v-btn
+                    :href="psikotestUrl + '/exam/seq/' + $route.params.examInfoId"
+                    target="_blank"
+                    color="red darken-2"
+                    block
+                    dark
+                  >TKD-6</v-btn>
+                </v-flex>
+                <v-flex xs12 md6 lg3 text-xs-center>
+                  <v-btn
+                    :href="psikotestUrl + '/exam/pap/' + $route.params.examInfoId"
+                    target="_blank"
+                    color="red darken-2"
+                    block
+                    dark
+                  >Papikostik</v-btn>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
