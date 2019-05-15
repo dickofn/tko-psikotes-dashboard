@@ -18,6 +18,7 @@
             :key="settings.text"
             :prepend-icon="settings.model ? settings.icon : settings['icon-alt']"
             append-icon
+            v-if="isLoggedIn"
           >
             <v-list-tile slot="activator">
               <v-list-tile-content>
