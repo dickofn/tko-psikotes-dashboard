@@ -59,7 +59,6 @@
   "tahunDiselenggarakan": "Tahun Diselenggarakan",
   "namaPenyelenggara": "Nama Penyelenggara",
   "bahasaAsingYangDikuasai": "Bahasa Asing yang Dikuasai",
-  "bahasa": "Bahasa",
   "mendengar": "Mendengar",
   "membaca": "Membaca",
   "berbicara": "Berbicara",
@@ -120,7 +119,7 @@
   "penyesuaian": "Penyesuaian Diri",
   "motivasi": "Motivasi",
   "aspekSikapDalamBekerja": "Aspek Sikap Dalam Bekerja",
-  "perencanaanKerja": "Perencanaan Kerja ",
+  "perencanaanKerja": "Perencanaan Kerja",
   "sistematikKerja": "Sistematik Kerja",
   "ketelitian": "Ketelitian",
   "inisiatif": "Inisiatif",
@@ -151,5 +150,13 @@
   "dataKuisonerTidakDitemukan": "Tidak ada data kuisioner",
   "idPasswordSalah": "ID / Password Salah",
   "jawabanPsikotes": "Jawaban Psikotes",
-  "bahasaInggris": "Bahasa Inggris"
+  "bahasaInggris": "Bahasa Inggris",
+  "psikotes": "Psikotes",
+  "pengaturan": "Pengaturan",
+  "pengaturanPsikotes": "Pengaturan Psikotes",
+  "pengaturanWaktu": "Pengaturan Waktu",
+  "pengaturanWaktuPsikotes": "Pengaturan Waktu Psikotes",
+  "waktu": "Waktu",
+  "milidetik": "Milidetik",
+  "wajibDiisi": "Wajib diisi"
 }

@@ -150,5 +150,13 @@
   "dataKuisonerTidakDitemukan": "There is no questionnaire data",
   "idPasswordSalah": "Wrong ID / Password",
   "jawabanPsikotes": "Psikotest Answer",
-  "bahasaInggris": "English"
+  "bahasaInggris": "English",
+  "psikotes": "Psychotest",
+  "pengaturan": "Settings",
+  "pengaturanPsikotes": "Psychotest Setting",
+  "pengaturanWaktu": "Time Setting",
+  "pengaturanWaktuPsikotes": "Psychotest Time Setting",
+  "waktu": "Time",
+  "milidetik": "Millisecond",
+  "wajibDiisi": "Should not be empty"
 }
