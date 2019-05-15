@@ -13,6 +13,7 @@ import DiscResult from "./views/Applicant/Result/DiscResult.vue";
 import Report from "./views/Applicant/Result/Report.vue";
 
 import SettingPsychotest from "./views/Setting/Psychotest.vue";
+import SettingPsychotestTime from "./views/Setting/Psychotest/Time.vue"
 
 Vue.use(Router);
 
@@ -61,6 +62,12 @@ const router = new Router({
       path: "/setting/psychotest",
       name: 'settingPsychotest',
       component: SettingPsychotest,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: "/setting/psychotest/time",
+      name: 'settingPsychotestTime',
+      component: SettingPsychotestTime,
       meta: { requiresAuth: true }
     },
     {
