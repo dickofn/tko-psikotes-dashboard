@@ -12,6 +12,28 @@
               <v-list-tile-title>{{ $t('dataPelamar') }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
+
+          <v-list-group
+            v-model="settings.model"
+            :key="settings.text"
+            :prepend-icon="settings.model ? settings.icon : settings['icon-alt']"
+            append-icon
+          >
+            <v-list-tile slot="activator">
+              <v-list-tile-content>
+                <v-list-tile-title>{{ $t('pengaturan') }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="$router.push({name : 'settingPsychotest'})" v-if="isLoggedIn">
+              <v-list-tile-action>
+                <v-icon>assignment</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ $t('psikotes') }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list-group>
+
           <v-list-tile @click="logout" v-if="isLoggedIn">
             <v-list-tile-action>
               <v-icon>logout</v-icon>
@@ -66,7 +88,12 @@ export default {
   name: "App",
   data () {
     return {
-      drawer: null
+      drawer: null,
+      settings: {
+        icon: 'keyboard_arrow_up',
+        'icon-alt': 'settings',
+        model: false,
+      }
     }
   },
   computed: {
@@ -87,7 +114,7 @@ export default {
     }
   },
   created () {
-    this.$i18n.locale =  localStorage.getItem('lang') || "id"
+    this.$i18n.locale = localStorage.getItem('lang') || "id"
     if (this.$store.getters.isLoggedIn) {
       this.axios
         .post(process.env.VUE_APP_API_URL + "/user/validation", {

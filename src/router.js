@@ -12,6 +12,8 @@ import PsychotestAnswer from "./views/Applicant/Result/PsychotestAnswer.vue";
 import DiscResult from "./views/Applicant/Result/DiscResult.vue";
 import Report from "./views/Applicant/Result/Report.vue";
 
+import SettingPsychotest from "./views/Setting/Psychotest.vue";
+
 Vue.use(Router);
 
 const router = new Router({
@@ -53,6 +55,12 @@ const router = new Router({
       path: "/applicant/:applicantId/result/report",
       name: "report",
       component: Report,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: "/setting/psychotest",
+      name: 'settingPsychotest',
+      component: SettingPsychotest,
       meta: { requiresAuth: true }
     },
     {
