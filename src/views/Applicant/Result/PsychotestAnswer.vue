@@ -18,6 +18,7 @@
                     target="_blank"
                     color="red darken-2"
                     block
+                    large
                     dark
                   >DISC</v-btn>
                 </v-flex>
@@ -27,6 +28,7 @@
                     target="_blank"
                     color="red darken-2"
                     block
+                    large
                     dark
                   >APM</v-btn>
                 </v-flex>
@@ -36,6 +38,7 @@
                     target="_blank"
                     color="red darken-2"
                     block
+                    large
                     dark
                   >{{ $t('bahasaInggris') }}</v-btn>
                 </v-flex>
@@ -45,6 +48,7 @@
                     target="_blank"
                     color="red darken-2"
                     block
+                    large
                     dark
                   >TKD-1</v-btn>
                 </v-flex>
@@ -54,6 +58,7 @@
                     target="_blank"
                     color="red darken-2"
                     block
+                    large
                     dark
                   >TKD-5</v-btn>
                 </v-flex>
@@ -63,6 +68,7 @@
                     target="_blank"
                     color="red darken-2"
                     block
+                    large
                     dark
                   >TKD-6</v-btn>
                 </v-flex>
@@ -72,6 +78,7 @@
                     target="_blank"
                     color="red darken-2"
                     block
+                    large
                     dark
                   >Papikostik</v-btn>
                 </v-flex>
