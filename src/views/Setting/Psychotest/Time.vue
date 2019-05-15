@@ -14,7 +14,7 @@
                     <template v-slot:activator="{ on }">
                       <v-btn v-on="on" color="red darken-2" block large dark>DISC</v-btn>
                     </template>
-                    <time-dialog :title="'DISC'" :examId="1"></time-dialog>
+                    <time-dialog :title="'DISC'" :examId="1" @closeDialog="timeSettingDialogDisc = false"></time-dialog>
                   </v-dialog>
                 </v-flex>
                 <v-flex xs12 md6 lg3 text-xs-center>
@@ -22,7 +22,7 @@
                     <template v-slot:activator="{ on }">
                       <v-btn v-on="on" color="red darken-2" block large dark>APM</v-btn>
                     </template>
-                    <time-dialog :title="'APM'" :examId="2"></time-dialog>
+                    <time-dialog :title="'APM'" :examId="2" @closeDialog="timeSettingDialogApm = false"></time-dialog>
                   </v-dialog>
                 </v-flex>
                 <v-flex xs12 md6 lg3 text-xs-center>
@@ -36,7 +36,7 @@
                         dark
                       >{{ $t('bahasaInggris') }}</v-btn>
                     </template>
-                    <time-dialog :title="$t('bahasaInggris')" :examId="3"></time-dialog>
+                    <time-dialog :title="$t('bahasaInggris')" :examId="3" @closeDialog="timeSettingDialogEng = false"></time-dialog>
                   </v-dialog>
                 </v-flex>
                 <v-flex xs12 md6 lg3 text-xs-center>
@@ -44,7 +44,7 @@
                     <template v-slot:activator="{ on }">
                       <v-btn v-on="on" color="red darken-2" block large dark>TKD-1</v-btn>
                     </template>
-                    <time-dialog :title="'TKD-1'" :examId="4"></time-dialog>
+                    <time-dialog :title="'TKD-1'" :examId="4" @closeDialog="timeSettingDialogTkd1 = false"></time-dialog>
                   </v-dialog>
                 </v-flex>
                 <v-flex xs12 md6 lg3 text-xs-center>
@@ -52,7 +52,7 @@
                     <template v-slot:activator="{ on }">
                       <v-btn v-on="on" color="red darken-2" block large dark>TKD-5</v-btn>
                     </template>
-                    <time-dialog :title="'TKD-5'" :examId="5"></time-dialog>
+                    <time-dialog :title="'TKD-5'" :examId="5" @closeDialog="timeSettingDialogTkd5 = false"></time-dialog>
                   </v-dialog>
                 </v-flex>
                 <v-flex xs12 md6 lg3 text-xs-center>
@@ -60,7 +60,7 @@
                     <template v-slot:activator="{ on }">
                       <v-btn v-on="on" color="red darken-2" block large dark>TKD-6</v-btn>
                     </template>
-                    <time-dialog :title="'TKD-6'" :examId="6"></time-dialog>
+                    <time-dialog :title="'TKD-6'" :examId="6" @closeDialog="timeSettingDialogTkd6 = false"></time-dialog>
                   </v-dialog>
                 </v-flex>
                 <v-flex xs12 md6 lg3 text-xs-center>
@@ -68,7 +68,7 @@
                     <template v-slot:activator="{ on }">
                       <v-btn v-on="on" color="red darken-2" block large dark>Papikostik</v-btn>
                     </template>
-                    <time-dialog :title="'Papikostik'" :examId="7"></time-dialog>
+                    <time-dialog :title="'Papikostik'" :examId="7" @closeDialog="timeSettingDialogPap = false"></time-dialog>
                   </v-dialog>
                 </v-flex>
               </v-layout>
