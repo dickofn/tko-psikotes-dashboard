@@ -44,8 +44,11 @@ export default {
         examTypeId: this.examId,
         examTime: this.value
       }
+      const auth = {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      }
       this.$store.dispatch('setLoading', true)
-      this.axios.post(process.env.VUE_APP_API_URL + "/exam/type/update", data)
+      this.axios.post(process.env.VUE_APP_API_URL + "/exam/type/update", data, auth)
         .then(() => {
           this.$store.dispatch('setLoading', false)
           this.$emit('closeDialog')
