@@ -157,6 +157,6 @@
   "pengaturanWaktu": "Time Setting",
   "pengaturanWaktuPsikotes": "Psychotest Time Setting",
   "waktu": "Time",
-  "milidetik": "Millisecond",
+  "menit": "Minutes",
   "wajibDiisi": "Should not be empty"
 }
