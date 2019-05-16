@@ -2,7 +2,7 @@
   <div id="app">
     <v-app id="inspire">
       <!-- HEADER START -->
-      <v-navigation-drawer fixed v-model="drawer" app>
+      <v-navigation-drawer fixed v-model="drawer" app v-if="isLoggedIn">
         <v-list dense>
           <v-list-tile @click="$router.push({name : 'applicants'})" v-if="isLoggedIn">
             <v-list-tile-action>
@@ -46,7 +46,7 @@
         </v-list>
       </v-navigation-drawer>
       <v-toolbar color="red darken-2" dark fixed app extension-height="7">
-        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-toolbar-side-icon @click.stop="drawer = !drawer" v-if="isLoggedIn"></v-toolbar-side-icon>
         <v-toolbar-title class="headline text-uppercase">
           Dashboard Psikotes&nbsp;
           <span class="font-weight-light">Tokoonderdil</span>
